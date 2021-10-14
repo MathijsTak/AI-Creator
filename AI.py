@@ -16,10 +16,10 @@ from sklearn.metrics import plot_confusion_matrix
 # 4. De label van je dataset definiëren
 # 5. De data verdelen in training data en test data
 
-dataset = pd.read_csv('dataset.csv') # dataset.csv veranderen in de naam van het csv bestand vb. data.csv
-input_data = dataset[['column', 'column']] # column veranderen naar de naam van de kolom vb. age
+dataset = pd.read_csv('cardio_train.csv') # dataset.csv veranderen in de naam van het csv bestand vb. data.csv
+input_data = dataset[['age','gender','height','weight','ap_hi','ap_lo','cholesterol','gluc','smoke','alco','active']] # column veranderen naar de naam van de kolom vb. age
 input_data = (input_data - input_data.mean()) / (input_data.max() - input_data.min()) # stap 3
-label = dataset['label'] # label vervangen voor de label van de dataset vb. death
+label = dataset['cardio'] # label vervangen voor de label van de dataset vb. death
 
 input_data_train, input_data_test, labels_train, labels_test = train_test_split(input_data,label,test_size=0.2,random_state=42) # https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
 
@@ -42,7 +42,7 @@ def bereken_MAE(pred_labels,true_labels):
     return MAE
 
 def bereken_accuracy(pred_labels,true_labels):
-    lengte = len(true_labels
+    lengte = len(true_labels)
     all_errors = 0
     for pred_label,true_label in zip(pred_labels,true_labels):
         if pred_label < 0.5:
@@ -85,7 +85,6 @@ def epoch(hidden_layer_sizes,epochs,training):
     nums_data= [50,100,200,300,400,500,600,700,800,900,1000,1250,1500,1750,2000]
     for num_data in nums_data:
         hidden_layer_sizes = hidden_layer_sizes
-        epochs = int(epochs)
 
         if training == 1:
             model = MLPRegressor(hidden_layer_sizes=hidden_layer_sizes,
@@ -177,19 +176,46 @@ try: # probeer het oude model te laden en maak anders een nieuw model
     
 except:
     print('MLPRegressor(1) or LogisticRegression(2) or MLPClassifier(3)')
-    training = int(input())
+    while True:
+        try:
+            training = int(input())
+            if 1 <= training <= 3:
+                break
+            print('Dit antwoord moet een getal zijn van 1 t/m 3')
+        except:
+            print('Dit antwoord moet een getal zijn van 1 t/m 3')
     if training == 1:
         hidden_layer_sizes = []
         while True:
-            size = input('Grote van de (volgende) hidden layer: ')
+            print('Grote van de (volgende) hidden layer, klaar toets Enter')
+            size = input()
             if size != '':
                 try:
-                    hidden_layer_sizes.append(int(size))
+                    if 1 <= int(size) <= 500000:
+                        hidden_layer_sizes.append(int(size))
+                    else:
+                        print('Grote moet een getal boven de 0 zijn en kleiner dan 500.000')
                 except:
-                    print('Size moet getal zijn')
+                    print('Grote moet getal zijn')
             else:
-                break
-        epochs = input('Hoeveel epochs: ')
+                if hidden_layer_sizes != []:
+                    break
+                else:
+                    print('Er moet minstens 1 hidden layer zijn')
+
+        while True:
+            print('Aantal epochs')
+            epochs = input()
+            if epochs != '':
+                try:
+                    if 1 <= int(epochs):
+                        epochs = int(epochs)
+                        break
+                    else:
+                        print('Het aantal epochs moet boven de 0 zijn')
+                except:
+                    print('Aantal epochs moet getal zijn')
+
         print('training...')
         epoch(hidden_layer_sizes,epochs,1)
 
