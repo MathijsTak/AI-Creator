@@ -42,7 +42,7 @@ def bereken_MAE(pred_labels,true_labels):
     return MAE
 
 def bereken_accuracy(pred_labels,true_labels):
-    lengte = len(true_labels) # op deze manier werkt de code foutloos
+    lengte = len(true_labels
     all_errors = 0
     for pred_label,true_label in zip(pred_labels,true_labels):
         if pred_label < 0.5:
