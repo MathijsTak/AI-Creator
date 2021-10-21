@@ -3,7 +3,6 @@ from numpy.core.numeric import tensordot
 import pandas as pd
 import pickle
 import matplotlib.pyplot as plt
-import csv
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor
 from sklearn.linear_model import LogisticRegression
