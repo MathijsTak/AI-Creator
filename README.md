@@ -29,7 +29,7 @@ With this program we try to predict heart failure.
 - Extract the zip file on your computer
 
 ### How to use
-- Open the file named 'AI Creator.exe'
+- Open the file named 'Pacemaker AI.exe'
 - When the programm starts you need to select the dataset (csv file) you want to use. (This has to be one of the datasets given below)
 - To create an AI go to File and select New File
 - Here you can set differend parameters for the AI
