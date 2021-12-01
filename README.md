@@ -5,6 +5,7 @@
 - Introduction
 - Description of what is already known
 - Own research
+- Product
   - Installation
   - How to use
   - Settings
@@ -23,6 +24,8 @@ With this program we try to predict heart failure.
 - You know how an AI is trained
 
 ## Own research
+
+## Product
 
 ### Installation
 - Download the latest realease
