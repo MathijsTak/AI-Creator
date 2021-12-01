@@ -1,0 +1,59 @@
+import PySimpleGUI as sg
+import os.path
+import pickle as pkl
+import json
+
+def open_json():
+    with open('settings.json', 'r') as f:
+        settings = json.load(f)
+    return settings
+
+def window(model, input_values):
+    settings = open_json()
+    if settings["default save folder"] != "":
+        text = settings["default save folder"]
+    else:
+        text = ""
+    column = [
+        [
+            sg.Text("File name"),
+            sg.In(size=(25, 1), key="file name")
+        ],
+        [
+            sg.Text("Save folder"),
+            sg.In(text, size=(25, 1), enable_events=True,
+                  key="save folder", disabled=True),
+            sg.FolderBrowse(),
+        ],
+        [
+            sg.Button("Save", enable_events=True, key="save")
+        ]
+
+    ]
+    save_layout = [
+        [
+            sg.Column(column)
+        ]
+    ]
+    save_window = sg.Window("AI Creator", save_layout).Finalize()
+
+    while True:
+        event, values = save_window.read()
+        if event == sg.WIN_CLOSED:
+            break
+
+        if event == "save":
+            file_name = values["file name"]
+            save_path = values["save folder"]
+
+            with open(save_path + "/" + file_name + ".model", 'wb') as file:
+                pkl.dump(model, file)
+            try:
+                os.mkdir("C:/AI Creator")
+            except:
+                pass
+            with open("C:/AI Creator/" + file_name, 'wb') as file:
+                pkl.dump(input_values, file)
+
+            save_window.close()
+            break

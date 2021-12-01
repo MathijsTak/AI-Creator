@@ -1,0 +1,139 @@
+{
+  "themes": {
+    "white": {
+      "name": "White mode",
+      "bgc": "white",
+      "tc": "black",
+      "theme": "SystemDefault"
+    },
+    "black": {
+      "name": "Black mode",
+      "bgc": "black",
+      "tc": "white",
+      "theme": "Black"
+    },
+    "pink": {
+      "name": "Pink mode",
+      "bgc": "pink",
+      "tc": "black",
+      "theme": "LightPurple"
+    },
+    "green": {
+      "name": "Green mode",
+      "bgc": "lightblue",
+      "tc": "black",
+      "theme": "Green"
+    },
+    "python": {
+      "name": "Python mode",
+      "bgc": "#3D7AAB",
+      "tc": "#FFDE56",
+      "theme": "Python"
+    },
+    "yellow": {
+      "name": "Yellow mode",
+      "bgc": "yellow",
+      "tc": "black",
+      "theme": "SandyBeach"
+    },
+    "brown": {
+      "name": "Brown mode",
+      "bgc": "brown",
+      "tc": "black",
+      "theme": "LightBrown13"
+    }
+  },
+  "theme": "yellow",
+  "cardio_train.csv": {
+    "dataset_values": [
+      "age",
+      "gender",
+      "height",
+      "weight",
+      "ap_hi",
+      "ap_lo",
+      "cholesterol",
+      "gluc",
+      "smoke",
+      "alco",
+      "active"
+    ],
+    "label": "cardio",
+    "mapping": {
+      "age": { "min": 0, "max": 50000 },
+      "gender": { "min": 1, "max": 2 },
+      "height": { "min": 50, "max": 220 },
+      "weight": { "min": 20, "max": 800 },
+      "ap_hi": { "min": 50, "max": 200 },
+      "ap_lo": { "min": 0, "max": 150 },
+      "cholesterol": { "min": 1, "max": 3 },
+      "gluc": { "min": 1, "max": 3 },
+      "smoke": { "min": 0, "max": 1 },
+      "alco": { "min": 0, "max": 1 },
+      "active": { "min": 0, "max": 1 },
+      "cardio": { "min": 0, "max": 1 }
+    }
+  },
+  "heart_failure_clinical_records_dataset.csv": {
+    "dataset_values": [
+      "age",
+      "anaemia",
+      "creatinine_phosphokinase",
+      "diabetes",
+      "ejection_fraction",
+      "high_blood_pressure",
+      "platelets",
+      "serum_creatinine",
+      "serum_sodium",
+      "sex",
+      "smoking"
+    ],
+    "label": "HeartDisease",
+    "mapping": {
+      "age": { "min": 0, "max": 50000 },
+      "anaemia": { "min": 1, "max": 2 },
+      "creatinine_phosphokinase": { "min": 50, "max": 220 },
+      "diabetes": { "min": 20, "max": 800 },
+      "ejection_fraction": { "min": 50, "max": 200 },
+      "high_blood_pressure": { "min": 0, "max": 150 },
+      "platelets": { "min": 1, "max": 3 },
+      "serum_sodium": { "min": 1, "max": 3 },
+      "sex": { "min": 0, "max": 1 },
+      "smoking": { "min": 0, "max": 1 },
+      "time": { "min": 0, "max": 1 },
+      "DEATH_EVENT": { "min": 0, "max": 1 }
+    }
+  },
+  "heart.csv": {
+    "dataset_values": [
+      "Age",
+      "Sex",
+      "ChestPainType",
+      "RestingBP",
+      "Cholesterol",
+      "FastingBS",
+      "RestingECG",
+      "MaxHR",
+      "ExerciseAngina",
+      "Oldpeak",
+      "ST_Slope"
+    ],
+    "label": "DEATH_EVENT",
+    "mapping": {
+      "Age": { "min": 0, "max": 50000 },
+      "Sex": { "min": 1, "max": 2 },
+      "ChestPainType": { "min": 50, "max": 220 },
+      "RestingBP": { "min": 20, "max": 800 },
+      "Cholesterol": { "min": 50, "max": 200 },
+      "FastingBS": { "min": 0, "max": 150 },
+      "RestingECG": { "min": 1, "max": 3 },
+      "MaxHR": { "min": 1, "max": 3 },
+      "ExerciseAngina": { "min": 0, "max": 1 },
+      "Oldpeak": { "min": 0, "max": 1 },
+      "ST_Slope": { "min": 0, "max": 1 },
+      "HeartDisease": { "min": 0, "max": 0 }
+    }
+  },
+  "default save folder": "",
+  "dataset": ""
+}
