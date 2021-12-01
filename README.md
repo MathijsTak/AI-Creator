@@ -38,12 +38,17 @@ With this program we try to predict heart failure.
 - Here you can set differend parameters for the AI
 - When the parameters are set, you can train the AI by going under Train and selecting Train
 - When done, you can predict with unkown data and save the file located under the File section
+- If you want more information on how to use the program see the Wiki
+
+### Available datasets
+https://www.kaggle.com/fedesoriano/heart-failure-prediction
+https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
+https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 
 ### Settings
 - In settings.json are all the available datasets listed and it is posible to add a dataset yourself.
 - You can do this by sorting all the lines. I use a VS Code extension for this, and then add your dataset with the input_values, label and mapping
 - To change the default save folder and the dataset you can either edit the settings.json or inside the application under Settings and then Other Settings.
-
 
 ### Work in progress
 - Epochtrain together with the epochs and number of data is not available at the moment
