@@ -41,9 +41,9 @@ With this program we try to predict heart failure.
 - If you want more information on how to use the program see the Wiki
 
 ### Available datasets
-https://www.kaggle.com/fedesoriano/heart-failure-prediction
-https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
-https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
+- https://www.kaggle.com/fedesoriano/heart-failure-prediction
+- https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
+- https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 
 ### Settings
 - In settings.json are all the available datasets listed and it is posible to add a dataset yourself.
