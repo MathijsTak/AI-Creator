@@ -36,7 +36,7 @@ With this program we try to predict heart failure.
 - To create an AI go to File and select New File
 - Here you can set differend parameters for the AI
 - When the parameters are set, you can train the AI by going under Train and selecting Train
-- When done, you can predict with unkown data and save the file located under the File section
+- When done, you can predict with unknown data and save the file located under the File section
 - If you want more information on how to use the program see the Wiki
 
 ### Available datasets
