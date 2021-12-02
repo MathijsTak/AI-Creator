@@ -34,7 +34,7 @@ With this program we try to predict heart failure.
 
 ### How to use
 - Open the file named 'Pacemaker AI.exe'
-- When the programm starts you need to select the dataset (csv file) you want to use. (This has to be one of the datasets given below)
+- When the program starts for the first time you need to select the dataset (csv file) you want to use. (This has to be one of the datasets given below)
 - To create an AI go to File and select New File
 - Here you can set differend parameters for the AI
 - When the parameters are set, you can train the AI by going under Train and selecting Train
