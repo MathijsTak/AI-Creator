@@ -2,19 +2,17 @@
 
 ## Table of contents
 - [Preface](https://github.com/MathijsTak/Pacemaker-ai#preface)
-- Introduction
-- Description of what is already known
-- Own research
+- [introduction](https://github.com/MathijsTak/Pacemaker-ai#introduction)
+- [Description of what is already known](https://github.com/MathijsTak/Pacemaker-ai#description-of-what-is-already-known)
+- [Own research](https://github.com/MathijsTak/Pacemaker-ai#own-research)
 - [Product](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#product)
   - Installation
   - How to use
   - Available datasets
   - Settings
-  - Work in progress
-  - Idea's
-- Conclusion
-- Reflexion
-- Citation
+- [Conclusion](https://github.com/MathijsTak/Pacemaker-ai#conclusion)
+- [Reflexion](https://github.com/MathijsTak/Pacemaker-ai#reflection)
+- [Citation](https://github.com/MathijsTak/Pacemaker-ai#citation)
 
 ## Preface
 With this program we try to predict heart failure. 
