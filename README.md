@@ -52,14 +52,7 @@ With this program we try to predict heart failure.
 - You can do this by sorting all the lines. I use a VS Code extension for this, and then add your dataset with the input_values, label and mapping
 - To change the default save folder and the dataset you can either edit the settings.json or inside the application under Settings and then Other Settings.
 
-### Work in progress
-- Epochtrain together with the epochs and number of data is not available at the moment
-- Auto save and auto open option in the other settings menu
-- Change the dataset in the other settings menu
-
-### Idea's
-- Ability to add new datasets in the programm (now you have to edit the settings.json file and the python file in order to add a new dataset)
-- Ability to change the mapping for the datasets
+[Project board](https://github.com/MathijsTak/Pacemaker-ai/projects/1?fullscreen=true)
 
 If you would like to support me
 
