@@ -3,10 +3,12 @@ import os.path
 import pickle as pkl
 import json
 
+
 def open_json():
     with open('settings.json', 'r') as f:
         settings = json.load(f)
     return settings
+
 
 def window(model, input_values):
     settings = open_json()

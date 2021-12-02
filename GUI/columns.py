@@ -15,6 +15,7 @@ def open_json():
         settings = json.load(f)
     return settings
 
+
 def save_json(file):
     theme_var = json.loads(str(file).replace("'", '"'))
     with open("settings.json", "w",) as write_file:
@@ -41,13 +42,16 @@ def home_column():
             sg.Text("Here you can set differend parameters for the AI")
         ],
         [
-            sg.Text("When the parameters are set, you can train the AI by going under Train and selecting Train")
+            sg.Text(
+                "When the parameters are set, you can train the AI by going under Train and selecting Train")
         ],
         [
-            sg.Text("When done, you can predict with unknown data and save the file located under the File section")
+            sg.Text(
+                "When done, you can predict with unknown data and save the file located under the File section")
         ],
         [
-            sg.Text("If you want more information on how to use the program see the Help section")
+            sg.Text(
+                "If you want more information on how to use the program see the Help section")
         ],
         [
             sg.Button("Github", key="github"),
@@ -168,6 +172,7 @@ def open_column():
 
     return column
 
+
 def theme_column():
     settings = open_json()
     column = [
@@ -205,7 +210,8 @@ def settings_column():
         ],
         [
             sg.Text("Data", size=(10, 1)),
-            sg.In(settings["dataset"], size=(25, 1), disabled=True, enable_events=True, key="data"),
+            sg.In(settings["dataset"], size=(25, 1),
+                  disabled=True, enable_events=True, key="data"),
             sg.FileBrowse(file_types=(("CSV Files", ".csv"),)),
         ],
     ]
