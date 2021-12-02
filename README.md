@@ -61,6 +61,9 @@ With this program we try to predict heart failure.
 - Ability to add new datasets in the programm (now you have to edit the settings.json file and the python file in order to add a new dataset)
 - Ability to change the mapping for the datasets
 
+If you would like to support me
+<a href="https://www.buymeacoffee.com/MathijsTak" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 ## Conclusion
 
 ## Reflection
