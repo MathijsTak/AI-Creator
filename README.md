@@ -1,11 +1,11 @@
 # Pacemaker AI
 
 ## Table of contents
-- Preface
+- [Preface](https://github.com/MathijsTak/Pacemaker-ai#preface)
 - Introduction
 - Description of what is already known
 - Own research
-- Product
+- [Product](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#product)
   - Installation
   - How to use
   - Available datasets
