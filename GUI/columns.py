@@ -35,7 +35,23 @@ def getcolumns(path):
 def home_column():
     column = [
         [
-            sg.Text("Welkom!"),
+            sg.Text("To create an AI go to File and select New File")
+        ],
+        [
+            sg.Text("Here you can set differend parameters for the AI")
+        ],
+        [
+            sg.Text("When the parameters are set, you can train the AI by going under Train and selecting Train")
+        ],
+        [
+            sg.Text("When done, you can predict with unknown data and save the file located under the File section")
+        ],
+        [
+            sg.Text("If you want more information on how to use the program see the Help section")
+        ],
+        [
+            sg.Button("Github", key="github"),
+            sg.Button("Buy me a coffee", key="coffee")
         ]
     ]
     return column

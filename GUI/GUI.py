@@ -5,6 +5,7 @@ import columns
 import save_window
 import choose_data_window
 import json
+import webbrowser
 
 def open_json():
     with open('settings.json', 'r') as f:
@@ -301,8 +302,13 @@ while True:
 
         # Help
         if event == "Help":
-            sg.PopupQuickMessage(
-                "This feature isn't available", font=("Any 20"))
+            webbrowser.open("https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#product")
+        
+        if event == "github":
+            webbrowser.open("https://github.com/MathijsTak/Pacemaker-ai")
+
+        if event == "coffee":
+            webbrowser.open("https://www.buymeacoffee.com/MathijsTak")
 
     window.Close()
 
