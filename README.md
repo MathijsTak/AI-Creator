@@ -18,6 +18,7 @@
 With this program we try to predict heart failure. 
 
 ## Introduction
+Heart failure is one of the most common causes of death. Those affected often aren't aware they are at risk. With this program we try to show people whether it is likely that they will develop heart failure or not.   
 
 ## Description of what is already known
 - You know how an AI is trained
