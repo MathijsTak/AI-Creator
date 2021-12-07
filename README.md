@@ -43,7 +43,7 @@ With this program we try to predict heart failure.
 - https://www.kaggle.com/fedesoriano/heart-failure-prediction
 - https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 - https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
-- Note: You can add other datasets in 'Settings.json'
+- Note: You can [add other datasets](https://github.com/MathijsTak/Pacemaker-ai/wiki/settings.json) in 'Settings.json'
 
 ### Settings
 - In settings.json are all the available datasets listed and it is posible to add a dataset yourself.
