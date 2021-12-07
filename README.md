@@ -31,7 +31,9 @@ For more information on how a neural network works click [here](https://www.ibm.
 
 
 ## Own research
-To know more about heart failure, we did some research on the heart. The heart is a vital organ located in the centre of the chest, slightly to the left. It is about the size of a fist and pumps blood around the body. The blood provides oxygen and nutrients to all organs and muscles. Oxygen-free blood enters the heart and ends up in the right atrium. The beating of the heart creates bloodpressure, which opens the valve to let the blood into the right ventricle. Then, again because of the bloodpressure, the blood goes through the pulmonary artery to the lungs. Oxygen-rich blood comes back and ends up in the left atrium. Then the valve opens up, this allows the blood to enter the left ventricle. Finally the blood leaves the heart through the aorta and makes its way to the organs and muscles.    
+To know more about heart failure, we did some research on the heart. The heart is a vital organ located in the centre of the chest, slightly to the left. It is about the size of a fist and pumps blood around the body. The blood provides oxygen and nutrients to all organs and muscles. Oxygen-free blood enters the heart and ends up in the right atrium. The beating of the heart creates bloodpressure, which opens the valve to let the blood into the right ventricle. Then, again because of the bloodpressure, the blood goes through the pulmonary artery to the lungs. Oxygen-rich blood comes back and ends up in the left atrium. Then the valve opens up, this allows the blood to enter the left ventricle. Finally the blood leaves the heart through the aorta and makes its way to the organs and muscles.
+
+The contractions of the heart are coordinated by the superior node. It sends impulses to the atrioventricular node, the impulses go through to the muscles via the purkinje fibers. This allows the muscles to contract simultaneously. This is essential for the functioning of the heart.   
 
 ## Product
 We made an AI that 
