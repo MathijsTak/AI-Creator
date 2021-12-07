@@ -4,6 +4,7 @@
 - [Preface](https://github.com/MathijsTak/Pacemaker-ai#preface)
 - [introduction](https://github.com/MathijsTak/Pacemaker-ai#introduction)
 - [Description of what is already known](https://github.com/MathijsTak/Pacemaker-ai#description-of-what-is-already-known)
+  - What is an AI
 - [Own research](https://github.com/MathijsTak/Pacemaker-ai#own-research)
 - [Product](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#product)
   - Installation
@@ -21,7 +22,13 @@ With this program we try to predict heart failure.
 Heart failure is one of the most common causes of death. Those affected often aren't aware they are at risk. With this program we try to show people whether it is likely that they will develop heart failure. Hopefully the program can stimulate more people to go see a doctor wwhen necessary. This mighth result in less deaths caused by heart failure. 
 
 ## Description of what is already known
-- You know how an AI is trained
+### What is an AI
+Artificial Intelligence (AI) is really nothing more than a computer trying to imitate human intelligence. AI includes Machine Learning and deep learning. Both can be used for different purposes. For example, deep learning will work better if more data is available. Because processing this large amount of data requires a high-end machine.
+
+A machine learning model consists of neurons and weights. While learning, the computer will adjust these weights to get a higher accuracy. The neurons are divided into three categories the input layer, hidden layer, and the output layer. The input layer is your input values, and the output layer is the prediction. The hidden layers can be adjusted to get better accuracy. 
+
+For more information on how a neural network works click [here](https://www.ibm.com/cloud/learn/neural-networks)
+
 
 ## Own research
 
