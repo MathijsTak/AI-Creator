@@ -31,9 +31,7 @@ For more information on how a neural network works click [here](https://www.ibm.
 
 
 ## Own research
-To know more about heart failure, we did some research on the heart. We learned how to heart functions and how heart failure can arise. To read more about the research we did, click [here](
-
-The contractions of the heart are coordinated by the superior node. It sends impulses to the atrioventricular node, the impulses go through to the muscles via the purkinje fibers. This allows the muscles to contract simultaneously. This is essential for the functioning of the heart.   
+To know more about heart failure, we did some research on the heart. We learned how to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)  
 
 ## Product
 We made a program that is able to create and train a model and then predict unknown data
