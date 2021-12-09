@@ -122,45 +122,46 @@
             "serum_creatinine",
             "serum_sodium",
             "sex",
-            "smoking"
+            "smoking",
+            "time"
         ],
-        "label": "time",
+        "label": "DEATH_EVENT",
         "mapping": {
             "age": {
-                "min": 0,
-                "max": 50000
+                "min": 40,
+                "max": 95
             },
             "anaemia": {
-                "min": 1,
-                "max": 2
+                "min": 0,
+                "max": 1
             },
             "creatinine_phosphokinase": {
-                "min": 50,
-                "max": 220
+                "min": 23,
+                "max": 7861
             },
             "diabetes": {
-                "min": 20,
-                "max": 800
+                "min": 0,
+                "max": 1
             },
             "ejection_fraction": {
-                "min": 50,
-                "max": 200
+                "min": 14,
+                "max": 80
             },
             "high_blood_pressure": {
                 "min": 0,
-                "max": 150
+                "max": 1
             },
             "platelets": {
-                "min": 1,
-                "max": 3
+                "min": 25000,
+                "max": 850000
             },
             "serum_creatinine": {
-                "min": 0,
-                "max": 3
+                "min": 0.5,
+                "max": 9.4
             },
             "serum_sodium": {
-                "min": 1,
-                "max": 3
+                "min": 113,
+                "max": 148
             },
             "sex": {
                 "min": 0,
@@ -171,8 +172,8 @@
                 "max": 1
             },
             "time": {
-                "min": 0,
-                "max": 1
+                "min": 4,
+                "max": 285
             },
             "DEATH_EVENT": {
                 "min": 0,
@@ -247,5 +248,5 @@
         }
     },
     "default save folder": "",
-    "dataset": ""
+    "dataset": "C:/Users/Mathi/OneDrive - Corderius College/2021-2022/PWS/Cardiovascular Disease dataset/heart_failure_clinical_records_dataset.csv"
 }

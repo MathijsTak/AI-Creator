@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 import pickle as pkl
-from zeroone_ai import *
+from zeroone import *
 import columns
 import save_window
 import choose_data_window
@@ -63,7 +63,8 @@ while True:
             sg.Column(columns.home_column(), key="home", visible=True),
             sg.Column(columns.new_file_column(dataset_values, label),
                       key="new file", visible=False),
-            sg.Column(columns.open_column(dataset_values), key="open", visible=False),
+            sg.Column(columns.open_column(dataset_values),
+                      key="open", visible=False),
             sg.Column(columns.theme_column(), key="theme", visible=False),
             sg.Column(columns.settings_column(),
                       key="settings", visible=False),
@@ -130,15 +131,7 @@ while True:
                 prediction_data = pd.DataFrame(
                     prediction_data, input_values).transpose()
                 prediction = model.prediction(prediction_data)
-                if prediction >= 0.75:
-                    window["prediction"].update(
-                        "Prediction: True (" + str(round((prediction[0] * 100), 1)) + "% chance)")
-                elif prediction <= 0.5:
-                    window["prediction"].update(
-                        "Prediction: False (" + str(round((prediction[0] * 100), 1)) + "% chance)")
-                else:
-                    window["prediction"].update(
-                        "Prediction: Not valid (" + str(round((prediction[0] * 100), 1)) + "% chance)")
+                window["prediction"].update("Prediction: " + str(prediction))
             else:
                 sg.PopupError("Input values have to be integers",
                               title="Invalid input values")
@@ -259,7 +252,7 @@ while True:
                     window["new file"].update(visible=False)
                     window["open"].update(visible=True)
                     window["accuracy"].update(
-                        str(model.accuracy * 100) + " %", visible=True)
+                        str(model.accuracy), visible=True)
                     for x in dataset_values:
                         if x in input_values:
                             window[("input " + x)].update(disabled=False)
@@ -277,7 +270,7 @@ while True:
                     window["new file"].update(visible=False)
                     window["open"].update(visible=True)
                     window["accuracy"].update(
-                        str(model.accuracy * 100) + " %", visible=True)
+                        str(model.accuracy), visible=True)
                     for x in dataset_values:
                         if x in input_values:
                             window[("input " + x)].update(disabled=False)
@@ -299,7 +292,8 @@ while True:
         if event == "Plot":
             try:
                 model.plot(length=20)
-            except:
+            except ValueError as err:
+                print(err)
                 sg.PopupError(
                     "No model has been trained or opened", title="No model")
 
