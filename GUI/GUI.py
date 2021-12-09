@@ -7,15 +7,18 @@ import choose_data_window
 import json
 import webbrowser
 
+
 def open_json():
     with open('settings.json', 'r') as f:
         settings = json.load(f)
     return settings
 
+
 def save_json(file):
     theme_var = json.loads(str(file).replace("'", '"'))
     with open("settings.json", "w",) as write_file:
         json.dump(theme_var, write_file)
+
 
 settings = open_json()
 theme = settings["theme"]
@@ -215,7 +218,6 @@ while True:
             save_json(settings)
             break
 
-
         # Train
         if event == "Train":
             # Input values
@@ -303,8 +305,9 @@ while True:
 
         # Help
         if event == "Help":
-            webbrowser.open("https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#product")
-        
+            webbrowser.open(
+                "https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#product")
+
         if event == "github":
             webbrowser.open("https://github.com/MathijsTak/Pacemaker-ai")
 
