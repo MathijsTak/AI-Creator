@@ -124,11 +124,7 @@
             "sex",
             "smoking"
         ],
-<<<<<<< HEAD
         "label": "time",
-=======
-        "label": "HeartDisease",
->>>>>>> 3b9f9d695ed28cd26004838bfa238192c80df3e0
         "mapping": {
             "age": {
                 "min": 0,
@@ -158,13 +154,10 @@
                 "min": 1,
                 "max": 3
             },
-<<<<<<< HEAD
             "serum_creatinine": {
                 "min": 0,
                 "max": 3
             },
-=======
->>>>>>> 3b9f9d695ed28cd26004838bfa238192c80df3e0
             "serum_sodium": {
                 "min": 1,
                 "max": 3
@@ -254,9 +247,5 @@
         }
     },
     "default save folder": "",
-<<<<<<< HEAD
     "dataset": ""
-=======
-    "dataset": "C:/Users/Mathi/OneDrive - Corderius College/2021-2022/PWS/Cardiovascular Disease dataset/cardio_train.csv"
->>>>>>> 3b9f9d695ed28cd26004838bfa238192c80df3e0
 }
