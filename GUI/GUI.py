@@ -60,7 +60,7 @@ while True:
             sg.Column(columns.home_column(), key="home", visible=True),
             sg.Column(columns.new_file_column(dataset_values, label),
                       key="new file", visible=False),
-            sg.Column(columns.open_column(), key="open", visible=False),
+            sg.Column(columns.open_column(dataset_values), key="open", visible=False),
             sg.Column(columns.theme_column(), key="theme", visible=False),
             sg.Column(columns.settings_column(),
                       key="settings", visible=False),
@@ -220,6 +220,7 @@ while True:
         if event == "Train":
             # Input values
             input_values = []
+            print(datanodes)
             for i in datanodes:
                 try:
                     if values[i] == True:

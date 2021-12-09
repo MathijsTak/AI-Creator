@@ -103,7 +103,7 @@ def new_file_column(dataset_values, label):
     return column
 
 
-def open_column():
+def open_column(dataset_values):
     column = [
         [
             sg.Text("Open file"),
@@ -113,58 +113,14 @@ def open_column():
         [
             sg.Text("Model accuracy:"),
             sg.Text("", visible=False, key="accuracy")
-        ],
-        [
-            sg.Text("age", size=(10, 1)),
-            sg.In(key=("input age"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("gender", size=(10, 1)),
-            sg.In(key=("input gender"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("height", size=(10, 1)),
-            sg.In(key=("input height"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("weight", size=(10, 1)),
-            sg.In(key=("input weight"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("ap_hi", size=(10, 1)),
-            sg.In(key=("input ap_hi"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("ap_lo", size=(10, 1)),
-            sg.In(key=("input ap_lo"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("cholesterol", size=(10, 1)),
-            sg.In(key=("input cholesterol"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("gluc", size=(10, 1)),
-            sg.In(key=("input gluc"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("smoke", size=(10, 1)),
-            sg.In(key=("input smoke"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("alco", size=(10, 1)),
-            sg.In(key=("input alco"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Text("active", size=(10, 1)),
-            sg.In(key=("input active"), size=(10, 1), disabled=True)
-        ],
-        [
-            sg.Button("Predict", disabled=True, key="predict")
-        ],
-        [
-            sg.Text("Prediction: ", key="prediction")
         ]
     ]
+
+    for x in dataset_values:
+        column.append([sg.Text(x, size=(10, 1)), sg.In(key=("input " + x), size=(10, 1), disabled=True)])
+
+    column.append([sg.Button("Predict", disabled=True, key="predict")])
+    column.append([sg.Text("Prediction: ", key="prediction")])
 
     return column
 
