@@ -36,7 +36,7 @@ To know more about heart failure, we did some research on the heart. The heart i
 The contractions of the heart are coordinated by the superior node. It sends impulses to the atrioventricular node, the impulses go through to the muscles via the purkinje fibers. This allows the muscles to contract simultaneously. This is essential for the functioning of the heart.   
 
 ## Product
-We made an AI that 
+We made a program that is able to create and train a model and then predict unknown data
 
 ### Installation
 - Download the latest realease
