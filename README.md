@@ -50,7 +50,6 @@ We made a program that is able to create and train a model and then predict unkn
 - If you want more information on how to use the program see the Wiki
 
 ### Available datasets
-- https://www.kaggle.com/fedesoriano/heart-failure-prediction
 - https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 - https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 - Note: You can [add other datasets](https://github.com/MathijsTak/Pacemaker-ai/wiki/settings.json) in 'Settings.json'
