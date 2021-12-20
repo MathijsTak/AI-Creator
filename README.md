@@ -63,8 +63,11 @@ We made a program that is able to create and train a model and then predict unkn
 
 
 ## Conclusion
+We made a functioning AI that can predict heartfailure. However, the AI is very basic and only uses 10 different variabeles in its calculations. The AI does NOT replace any doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
 
 ## Reflection
+The process of this project when very smoothly. Although we ran into a couple issues. Firstly, buggs, we experienced lots of them. (more in detail explanation) 
+Secondly, to improve the accuracy of the AI, we collected all the minimums and maximums of the variables in the dataset. At first it wasn't clear whether we should collect the minimums and maximums of the dataset, or the minimums and maximums in general.
 
 ## Citation
 - scikit-learn (new BSD) https://pypi.org/project/scikit-learn/
