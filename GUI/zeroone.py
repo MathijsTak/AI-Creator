@@ -10,6 +10,14 @@ from sklearn.neural_network import MLPClassifier as MLPC
 from sklearn.metrics import plot_confusion_matrix
 
 
+def OHencoding(df, columns):
+    for column in columns:
+        print(df)
+        df = pd.get_dummies(df, columns=[column], prefix=[column])
+        print(df)
+    return df
+
+
 def accuracy(pred_labels, true_labels):
     all_errors = []
     for pred_label, true_label in zip(pred_labels, true_labels):
@@ -64,7 +72,6 @@ class MLPRegressor:
     def __init__(self, dataset, input_data, label, test_size=0.2, random_state=42, mapping=None):
         self.label = label
         self.mapping = mapping
-        dataset = pd.read_csv(dataset)
         input_data = dataset[input_data]
         if mapping == None:
             input_data = (input_data - input_data.mean()) / \
@@ -140,7 +147,6 @@ class MLPClassifier:
     def __init__(self, dataset, input_data, label, test_size=0.2, random_state=42, mapping=None):
         self.label = label
         self.mapping = mapping
-        dataset = pd.read_csv(dataset)
         input_data = dataset[input_data]
         if mapping == None:
             input_data = (input_data - input_data.mean()) / \
@@ -216,7 +222,6 @@ class LogisticRegressor:
     def __init__(self, dataset, input_data, label, test_size=0.2, random_state=42, mapping=None):
         self.label = label
         self.mapping = mapping
-        dataset = pd.read_csv(dataset)
         input_data = dataset[input_data]
         if mapping == None:
             input_data = (input_data - input_data.mean()) / \

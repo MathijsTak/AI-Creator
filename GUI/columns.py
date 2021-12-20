@@ -121,7 +121,8 @@ def open_column(dataset_values):
     ]
 
     for x in dataset_values:
-        column.append([sg.Text(x, size=(10, 1)), sg.In(key=("input " + x), size=(10, 1), disabled=True)])
+        column.append([sg.Text(x, size=(10, 1)), sg.In(
+            key=("input " + x), size=(10, 1), disabled=True)])
 
     column.append([sg.Button("Predict", disabled=True, key="predict")])
     column.append([sg.Text("Prediction: ", key="prediction")])
@@ -167,7 +168,7 @@ def settings_column():
         [
             sg.Text("Data", size=(10, 1)),
             sg.In(settings["dataset"], size=(25, 1),
-                  disabled=True, enable_events=True, key="data"),
+                  disabled=True, enable_events=True, key="data_path"),
             sg.FileBrowse(file_types=(("CSV Files", ".csv"),)),
         ],
     ]

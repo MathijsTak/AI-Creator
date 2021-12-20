@@ -50,11 +50,7 @@ def window(model, input_values):
 
             with open(save_path + "/" + file_name + ".model", 'wb') as file:
                 pkl.dump(model, file)
-            try:
-                os.mkdir("C:/AI Creator")
-            except:
-                pass
-            with open("C:/AI Creator/" + file_name, 'wb') as file:
+            with open(save_path + "/" + file_name, 'wb') as file:
                 pkl.dump(input_values, file)
 
             save_window.close()

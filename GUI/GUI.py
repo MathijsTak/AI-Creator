@@ -1,11 +1,24 @@
+from re import X
 import PySimpleGUI as sg
 import pickle as pkl
+import zeroone
 from zeroone import *
 import columns
 import save_window
 import choose_data_window
 import json
 import webbrowser
+import csv
+
+
+def getcolumns(df):
+    csv_reader = csv.reader(df, delimiter=',')
+    list_of_column_names = []
+    for row in csv_reader:
+        list_of_column_names.append(row)
+        break
+
+    return list_of_column_names[0]
 
 
 def open_json():
@@ -32,15 +45,8 @@ trainer = "MLPR"
 menu_def = ['&File', ['New File', 'Open', 'Save', '---', 'Close']], ['Settings', ['Theme',
                                                                                   'Other Settings']], ['Train', ['Train', 'Epochtrain', '---', 'Plot']], ['Help', ['Help']]
 
-while True:
-    datanodes, file_name, data = choose_data_window.window()
-    if file_name in settings:
-        dataset_values = settings[file_name]["dataset_values"]
-        label = settings[file_name]["label"]
-        mapping = settings[file_name]["mapping"]
-        break
-    else:
-        sg.PopupError("Data is not supported", title="Unsupported data")
+
+datanodes, file_name, df, label, mapping, dataset_values = choose_data_window.window()
 
 
 # ----- menubar and columns -----
@@ -123,7 +129,7 @@ while True:
             prediction_data = []
             for x in input_values:
                 try:
-                    prediction_data.append(int(values[("input " + x)]))
+                    prediction_data.append(float(values[("input " + x)]))
                 except ValueError:
                     pass
 
@@ -205,11 +211,40 @@ while True:
                 {"default save folder": ""})
             save_json(settings)
 
-        if event == "data":
-            data = values["data"]
-            settings.update({"dataset": data})
-            save_json(settings)
-            break
+        if event == "data_path":
+            old_data_path = data_path
+            data_path = values["data_path"]
+            if data_path != old_data_path:
+                file_name = data_path.split("/")[-1]
+                if file_name in settings:
+                    file_name = data_path.split(
+                        "/")[-1]  # Extract the file_name
+                    # Create a dataframe of the file
+                    df = pd.read_csv(data_path)
+                    # All the values that need encoding will be encoded.
+                    encode_columns = settings[file_name]["encode"]
+                    df = zeroone.OHencoding(df, encode_columns)
+                    datanodes = df.columns
+                    label = settings[file_name]["label"]
+                    dataset_values = []
+                    for x in datanodes:
+                        if x != label:
+                            dataset_values.append(x)
+                    for x in datanodes:
+                        mapping = settings[file_name]["mapping"]
+                        try:
+                            settings[file_name]["mapping"][x]
+                        except:
+                            mapping.update({x: {"min": 0, "max": 1}})
+                    settings.update({"dataset": data_path})
+                    save_json(settings)
+                    break
+                else:
+                    sg.PopupError("Data is not supported",
+                                  title="Unsupported data")
+            else:
+                sg.PopupError(
+                    "No data selected or same data slected", title="Data error")
 
         # Train
         if event == "Train":
@@ -237,13 +272,13 @@ while True:
                     # Training
                     if trainer == "MLPR":
                         model = MLPRegressor(
-                            data, input_values, label, mapping=mapping)
+                            df, input_values, label, mapping=mapping)
                         sg.PopupQuickMessage("Training...", font=("Any 20"))
                         model.train(hidden_layer_sizes)
                         sg.PopupQuickMessage("Done", font=("Any 20"))
                     if trainer == "MLPC":
                         model = MLPClassifier(
-                            data, input_values, label, mapping=mapping)
+                            df, input_values, label, mapping=mapping)
                         sg.PopupQuickMessage("Training...", font=("Any 20"))
                         model.train(hidden_layer_sizes)
                         sg.PopupQuickMessage("Done", font=("Any 20"))
@@ -261,7 +296,7 @@ while True:
                     window["predict"].update(disabled=False)
                 elif trainer == "LR":
                     model = LogisticRegressor(
-                        data, input_values, label, mapping=mapping)
+                        df, input_values, label, mapping=mapping)
                     sg.PopupQuickMessage("Training...", font=("Any 20"))
                     model.train()
                     sg.PopupQuickMessage("Done", font=("Any 20"))
@@ -285,15 +320,74 @@ while True:
 
         # Epochtrain
         if event == "Epochtrain":
-            sg.PopupQuickMessage(
-                "This feature isn't available", font=("Any 20"))
+            # Input values
+            input_values = []
+            print(datanodes)
+            for i in datanodes:
+                try:
+                    if values[i] == True:
+                        input_values.append(i)
+                except:
+                    pass
+
+            if input_values != []:
+                # Hidden layer sizes
+                hls = values["hidden layer sizes"].split(',')
+                hidden_layer_sizes = []
+                for x in hls:
+                    try:
+                        hidden_layer_sizes.append(int(x))
+                    except:
+                        pass
+
+                if len(hidden_layer_sizes) > 0:
+                    epochs = values["epochs"]
+                    try:
+                        epochs = int(epochs)
+                    except:
+                        pass
+
+                    if isinstance(epochs, int) == True:
+                        num_data = values["num data"]
+                        try:
+                            num_data = int(num_data)
+                        except:
+                            pass
+
+                        if isinstance(num_data, int) == True:
+                            if trainer == "MLPR":
+                                model = MLPRegressor(
+                                    df, input_values, label, mapping=mapping)
+                            elif trainer == "MLPC":
+                                model = MLPClassifier(
+                                    df, input_values, label, mapping=mapping)
+                            elif trainer == "LR":
+                                model = LogisticRegressor(
+                                    df, input_values, label, mapping=mapping)
+
+                            sg.PopupQuickMessage(
+                                "Training...", font=("Any 20"))
+                            model.epochtrain(
+                                hidden_layer_sizes, epochs, num_data)
+                            sg.PopupQuickMessage("Done", font=("Any 20"))
+
+                        else:
+                            sg.PopupError(
+                                "Number of data has to be an integer", title="Error")
+                    else:
+                        sg.PopupError(
+                            "Epochs has to be an integer", title="Error")
+                else:
+                    sg.PopupError(
+                        "Hidden layer sizes are not correctly filled in", title="Error")
+            else:
+                sg.PopupError("Select at least one input value", title="Error")
 
         # Plot
         if event == "Plot":
             try:
                 model.plot(length=20)
-            except ValueError as err:
-                print(err)
+            except:
                 sg.PopupError(
                     "No model has been trained or opened", title="No model")
 

@@ -1,6 +1,8 @@
 import PySimpleGUI as sg
 import json
 import csv
+import pandas as pd
+import zeroone
 
 
 def open_json():
@@ -13,17 +15,6 @@ def save_json(file):
     theme_var = json.loads(str(file).replace("'", '"'))
     with open("settings.json", "w",) as write_file:
         json.dump(theme_var, write_file)
-
-
-def getcolumns(path):
-    with open(path) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        list_of_column_names = []
-        for row in csv_reader:
-            list_of_column_names.append(row)
-            break
-
-    return list_of_column_names[0]
 
 
 def window():
@@ -53,21 +44,51 @@ def window():
                 break
 
             if event == "data":
-                data = values["data"]
-                settings.update({"dataset": data})
-                save_json(settings)
-                if data != '':
-                    datanodes = getcolumns(data)
-                    file_name = data.split("/")[-1]
-                    print(file_name)
-                    choose_data_window.Close()
-                    return datanodes, file_name, data
+                data_path = values["data"]
+                if data_path != '':
+                    file_name = data_path.split(
+                        "/")[-1]  # Extract the file_name
+                    # Create a dataframe of the file
+                    df = pd.read_csv(data_path)
+                    # All the values that need encoding will be encoded.
+                    encode_columns = settings[file_name]["encode"]
+                    df = zeroone.OHencoding(df, encode_columns)
+                    datanodes = df.columns
+                    label = settings[file_name]["label"]
+                    dataset_values = []
+                    for x in datanodes:
+                        if x != label:
+                            dataset_values.append(x)
+                    for x in datanodes:
+                        mapping = settings[file_name]["mapping"]
+                        try:
+                            settings[file_name]["mapping"][x]
+                        except:
+                            mapping.update({x: {"min": 0, "max": 1}})
+                    settings.update({"dataset": data_path})
+                    save_json(settings)
                 else:
                     sg.PopupError("No data selected", title="Data error")
 
     else:
-        data = settings["dataset"]
-        datanodes = getcolumns(data)
-        file_name = data.split("/")[-1]
-        print(file_name)
-        return datanodes, file_name, data
+        data_path = settings["dataset"]  # Get the path of the dataset
+        file_name = data_path.split("/")[-1]  # Extract the file_name
+        df = pd.read_csv(data_path)  # Create a dataframe of the file
+        # All the values that need encoding will be encoded.
+        encode_columns = settings[file_name]["encode"]
+        df = zeroone.OHencoding(df, encode_columns)
+        datanodes = df.columns
+        label = settings[file_name]["label"]
+        dataset_values = []
+        for x in datanodes:
+            if x != label:
+                dataset_values.append(x)
+        for x in datanodes:
+            mapping = settings[file_name]["mapping"]
+            try:
+                settings[file_name]["mapping"][x]
+            except:
+                mapping.update({x: {"min": 0, "max": 1}})
+        settings.update({"dataset": data_path})
+        save_json(settings)
+        return datanodes, file_name, df, label, mapping, dataset_values
