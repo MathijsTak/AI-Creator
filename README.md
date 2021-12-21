@@ -78,3 +78,4 @@ Well every programmer knows that buggs come with developing a program, but some 
 - numpy (BSD License (BSD)) https://github.com/numpy/numpy/blob/main/LICENSE.txt
 - zeroone-ai (MIT) https://github.com/MathijsTak/ZeroOneAi
 - PySimpleGUI (GNU Lesser General Public License v3.0) https://github.com/PySimpleGUI/PySimpleGUI/blob/master/license.txt
+- Dinand Wesdorp (Played a part in developing the GUI)
