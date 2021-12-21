@@ -50,6 +50,8 @@ def window():
                         "/")[-1]  # Extract the file_name
                     # Create a dataframe of the file
                     df = pd.read_csv(data_path)
+                    dataset = settings[file_name]
+                    dataset.update({"datanodes": list(df)})
                     # All the values that need encoding will be encoded.
                     encode_columns = settings[file_name]["encode"]
                     df = zeroone.OHencoding(df, encode_columns)
@@ -67,6 +69,8 @@ def window():
                             mapping.update({x: {"min": 0, "max": 1}})
                     settings.update({"dataset": data_path})
                     save_json(settings)
+                    window.Close()
+                    return datanodes, file_name, df, label, mapping, dataset_values
                 else:
                     sg.PopupError("No data selected", title="Data error")
 
@@ -74,6 +78,8 @@ def window():
         data_path = settings["dataset"]  # Get the path of the dataset
         file_name = data_path.split("/")[-1]  # Extract the file_name
         df = pd.read_csv(data_path)  # Create a dataframe of the file
+        dataset = settings[file_name]
+        dataset.update({"datanodes": list(df)})
         # All the values that need encoding will be encoded.
         encode_columns = settings[file_name]["encode"]
         df = zeroone.OHencoding(df, encode_columns)

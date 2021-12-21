@@ -153,7 +153,16 @@ def theme_column():
     return column
 
 
-def settings_column():
+def settings_column(file_name):
+    settings = open_json()
+    datanodes = settings[file_name]["datanodes"]
+    encode = settings[file_name]["encode"]
+    checkboxes = []
+    for x in datanodes:
+        if x in encode:
+            checkboxes.append(sg.Checkbox(x, default=True, key=("encode", x)))
+        else:
+            checkboxes.append(sg.Checkbox(x, default=False, key=("encode", x)))
     settings = open_json()
 
     column = [
@@ -170,6 +179,19 @@ def settings_column():
             sg.In(settings["dataset"], size=(25, 1),
                   disabled=True, enable_events=True, key="data_path"),
             sg.FileBrowse(file_types=(("CSV Files", ".csv"),)),
+        ],
+        [
+            sg.HorizontalSeparator()
+        ],
+        [
+            sg.Text("Values that need encoding"),
+        ],
+        checkboxes,
+        [
+            sg.HorizontalSeparator()
+        ],
+        [
+            sg.Button("Restart", enable_events=True, key="Restart")
         ],
     ]
 

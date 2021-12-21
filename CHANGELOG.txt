@@ -1,11 +1,9 @@
-# GUI v0.1
-The first release of the GUI.
-## Things you can do
-- Create an AI
-- Save an AI
-- Open an AI
-- Predict values with unknown data
-- Plot the accuracy
+# GUI v0.2.1
+## Bug fixes
+- Datasets can now be opened again
+
+## Added features
+- Ability to easily encode columns of your dataset using the other settings menu
 
 # GUI v0.2
 Bug fixes and added epochtrain
@@ -15,3 +13,14 @@ Bug fixes and added epochtrain
 ## Added features
 - Epochtrain (note: it is very buggy)
 - Split categorical data into true / false (note: The columns that need splitting can be changed in settings.json)
+
+# GUI v0.1
+The first release of the GUI.
+## Things you can do
+- Create an AI
+- Save an AI
+- Open an AI
+- Predict values with unknown data
+- Plot the accuracy
+
+

@@ -119,8 +119,35 @@
             "gender_2": {
                 "min": 0,
                 "max": 1
+            },
+            "gender": {
+                "min": 0,
+                "max": 1
+            },
+            "cholesterol": {
+                "min": 0,
+                "max": 1
+            },
+            "gluc": {
+                "min": 0,
+                "max": 1
             }
-        }
+        },
+        "datanodes": [
+            "id",
+            "age",
+            "gender",
+            "height",
+            "weight",
+            "ap_hi",
+            "ap_lo",
+            "cholesterol",
+            "gluc",
+            "smoke",
+            "alco",
+            "active",
+            "cardio"
+        ]
     },
     "heart_failure_clinical_records_dataset.csv": {
         "encode": [],

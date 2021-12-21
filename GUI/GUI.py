@@ -33,26 +33,17 @@ def save_json(file):
         json.dump(theme_var, write_file)
 
 
-settings = open_json()
-theme = settings["theme"]
-themes = settings["themes"]
-sg.theme(themes[theme]["theme"])
-bgc = themes[theme]["bgc"]
-tc = themes[theme]["tc"]
-
 trainer = "MLPR"
 
 menu_def = ['&File', ['New File', 'Open', 'Save', '---', 'Close']], ['Settings', ['Theme',
                                                                                   'Other Settings']], ['Train', ['Train', 'Epochtrain', '---', 'Plot']], ['Help', ['Help']]
 
 
-datanodes, file_name, df, label, mapping, dataset_values = choose_data_window.window()
-
-
 # ----- menubar and columns -----
 
 # Defining the layout for the window
 while True:
+    datanodes, file_name, df, label, mapping, dataset_values = choose_data_window.window()
     settings = open_json()
     theme = settings["theme"]
     themes = settings["themes"]
@@ -72,7 +63,7 @@ while True:
             sg.Column(columns.open_column(dataset_values),
                       key="open", visible=False),
             sg.Column(columns.theme_column(), key="theme", visible=False),
-            sg.Column(columns.settings_column(),
+            sg.Column(columns.settings_column(file_name),
                       key="settings", visible=False),
 
         ],
@@ -238,19 +229,28 @@ while True:
                             mapping.update({x: {"min": 0, "max": 1}})
                     settings.update({"dataset": data_path})
                     save_json(settings)
-                    break
                 else:
                     sg.PopupError("Data is not supported",
                                   title="Unsupported data")
             else:
                 sg.PopupError(
-                    "No data selected or same data slected", title="Data error")
+                    "No data selected or same data selected", title="Data error")
+
+        if event == "Restart":
+            dataset = settings[file_name]
+            old_datanodes = settings[file_name]["datanodes"]
+            encode_columns = []
+            for i in old_datanodes:
+                if values[("encode", i)] == True:
+                    encode_columns.append(i)
+            dataset.update({"encode": encode_columns})
+            save_json(settings)
+            break
 
         # Train
         if event == "Train":
             # Input values
             input_values = []
-            print(datanodes)
             for i in datanodes:
                 try:
                     if values[i] == True:
@@ -322,7 +322,6 @@ while True:
         if event == "Epochtrain":
             # Input values
             input_values = []
-            print(datanodes)
             for i in datanodes:
                 try:
                     if values[i] == True:
