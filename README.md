@@ -16,7 +16,7 @@
 - [Citation](https://github.com/MathijsTak/Pacemaker-ai#citation)
 
 ## Preface
-With this program we try to predict heart failure. 
+With this program we try to predict heart failure. We do this by creating a program that is able to create an AI and then use it to predict unkown data. We chose to do this because heart failure terrible and can lead to death. So we thought that it would be awesome to make an AI that can predict if a heart failure is likely. And no, we are not trying to replace doctors or other medical instruments. We just try to warn people if a heart failure is likely.
 
 ## Introduction
 Heart failure is one of the most common causes of death. Those affected often aren't aware they are at risk. With this program we try to show people whether it is likely that they will develop heart failure. Hopefully the program can stimulate more people to go see a doctor wwhen necessary. This mighth result in less deaths caused by heart failure. 
@@ -31,17 +31,20 @@ For more information on how a neural network works click [here](https://www.ibm.
 
 
 ## Own research
-To know more about heart failure, we did some research on the heart. We learned how to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)  
+To know more about heart failure, we did some research on the heart. We learned how to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
+
+What we discoverd was that the factors that can improve the chance of a heart failure are in line with the model. Like higher cholesterol, blood pressure and glucose. With these results 
 
 ## Product
 We made a program that is able to create and train a model and then predict unknown data
 
 ### Installation
-- Download the latest realease
-- Extract the zip file on your computer
+- Download the latest release (you can use the zip or exe file)
+- Extract the zip file on your computer or install the program using the exe file
+- Find the installation folder or where you extracted the zip file and open GUI.exe
 
 ### How to use
-- Open the file named 'Pacemaker AI.exe'
+- Open the file named 'GUI.exe'
 - When the program starts for the first time you need to select the dataset (csv file) you want to use. (This has to be one of the datasets given below)
 - To create an AI go to File and select New File
 - Here you can set differend parameters for the AI
