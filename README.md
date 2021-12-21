@@ -68,6 +68,8 @@ We made a functioning AI that can predict heartfailure. However, the AI is very 
 ## Reflection
 The process of this project when very smoothly. Although we ran into a couple issues. Firstly, buggs, we experienced lots of them. (more in detail explanation) 
 Secondly, to improve the accuracy of the AI, we collected all the minimums and maximums of the variables in the dataset. At first it wasn't clear whether we should collect the minimums and maximums of the dataset, or the minimums and maximums in general.
+### Buggs
+Well every programmer knows that buggs come with developing a program, but some bugs could have been prevented. Like the bugs where the naming of the variables where the reason. There where some large bugs where the datasets couldn't be opened but this is easily resolved when the issue is found.
 
 ## Citation
 - scikit-learn (new BSD) https://pypi.org/project/scikit-learn/
