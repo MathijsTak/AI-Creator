@@ -33,7 +33,7 @@ For more information on how a neural network works click [here](https://www.ibm.
 ## Own research
 To know more about heart failure, we did some research on the heart. We learned how to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
 
-What we discoverd was that the factors that can improve the chance of a heart failure are in line with the model. Like higher cholesterol, blood pressure and glucose. With these results 
+What we discovered was that the factors that can improve the chance of a heart failure are in line with the model. Like higher cholesterol, blood pressure and glucose. With these results 
 
 ## Product
 We made a program that is able to create and train a model and then predict unknown data
