@@ -80,80 +80,80 @@
                 "min": 1,
                 "max": 3
             }
-        },
-        "heart_failure_clinical_records_dataset.csv": {
-            "encode": [],
-            "df_label": "DEATH_EVENT",
-            "df_mapping": {
-                "age": {
-                    "min": 40,
-                    "max": 95
-                },
-                "creatinine_phosphokinase": {
-                    "min": 23,
-                    "max": 7861
-                },
-                "ejection_fraction": {
-                    "min": 14,
-                    "max": 80
-                },
-                "platelets": {
-                    "min": 25000,
-                    "max": 850000
-                },
-                "serum_creatinine": {
-                    "min": 0.5,
-                    "max": 9.4
-                },
-                "serum_sodium": {
-                    "min": 113,
-                    "max": 148
-                },
-                "time": {
-                    "min": 4,
-                    "max": 285
-                }
+        }
+    },
+    "heart_failure_clinical_records_dataset.csv": {
+        "encode": [],
+        "df_label": "DEATH_EVENT",
+        "df_mapping": {
+            "age": {
+                "min": 40,
+                "max": 95
+            },
+            "creatinine_phosphokinase": {
+                "min": 23,
+                "max": 7861
+            },
+            "ejection_fraction": {
+                "min": 14,
+                "max": 80
+            },
+            "platelets": {
+                "min": 25000,
+                "max": 850000
+            },
+            "serum_creatinine": {
+                "min": 0.5,
+                "max": 9.4
+            },
+            "serum_sodium": {
+                "min": 113,
+                "max": 148
+            },
+            "time": {
+                "min": 4,
+                "max": 285
             }
-        },
-        "heart.csv": {
-            "encode": [],
-            "df_label": "DEATH_EVENT",
-            "df_mapping": {
-                "Age": {
-                    "min": 0,
-                    "max": 50000
-                },
-                "Sex": {
-                    "min": 1,
-                    "max": 2
-                },
-                "ChestPainType": {
-                    "min": 50,
-                    "max": 220
-                },
-                "RestingBP": {
-                    "min": 20,
-                    "max": 800
-                },
-                "Cholesterol": {
-                    "min": 50,
-                    "max": 200
-                },
-                "FastingBS": {
-                    "min": 0,
-                    "max": 150
-                },
-                "RestingECG": {
-                    "min": 1,
-                    "max": 3
-                },
-                "MaxHR": {
-                    "min": 1,
-                    "max": 3
-                }
+        }
+    },
+    "heart.csv": {
+        "encode": [],
+        "df_label": "DEATH_EVENT",
+        "df_mapping": {
+            "Age": {
+                "min": 0,
+                "max": 50000
+            },
+            "Sex": {
+                "min": 1,
+                "max": 2
+            },
+            "ChestPainType": {
+                "min": 50,
+                "max": 220
+            },
+            "RestingBP": {
+                "min": 20,
+                "max": 800
+            },
+            "Cholesterol": {
+                "min": 50,
+                "max": 200
+            },
+            "FastingBS": {
+                "min": 0,
+                "max": 150
+            },
+            "RestingECG": {
+                "min": 1,
+                "max": 3
+            },
+            "MaxHR": {
+                "min": 1,
+                "max": 3
             }
-        },
-        "default save folder": "",
-        "dataset": ""
-    }
+        }
+    },
+    "default save folder": "",
+    "dataset": ""
 }
