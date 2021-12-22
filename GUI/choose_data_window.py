@@ -36,7 +36,7 @@ def window():
         ]
 
         choose_data_window = sg.Window(
-            "AI Creator", choose_data_layout).Finalize()
+            "AI Creator", choose_data_layout, icon='Images/logo.ico').Finalize()
 
         while True:
             event, values = choose_data_window.read()
@@ -69,7 +69,7 @@ def window():
                             mapping.update({x: {"min": 0, "max": 1}})
                     settings.update({"dataset": data_path})
                     save_json(settings)
-                    window.Close()
+                    choose_data_window.Close()
                     return datanodes, file_name, df, label, mapping, dataset_values
                 else:
                     sg.PopupError("No data selected", title="Data error")

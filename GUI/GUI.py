@@ -1,4 +1,3 @@
-from re import X
 import PySimpleGUI as sg
 import pickle as pkl
 import zeroone
@@ -9,6 +8,7 @@ import choose_data_window
 import json
 import webbrowser
 import csv
+import os
 
 
 def getcolumns(df):
@@ -70,7 +70,8 @@ while True:
     ]
 
     # Creating window
-    window = sg.Window("AI Creator", layout, resizable=True).Finalize()
+    window = sg.Window("AI Creator", layout, resizable=True,
+                       icon=os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/Images/icon.ico").Finalize()
     window.Maximize()
 
     while True:
