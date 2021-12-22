@@ -37,7 +37,8 @@ def window(model, input_values):
             sg.Column(column)
         ]
     ]
-    save_window = sg.Window("AI Creator", save_layout).Finalize()
+    save_window = sg.Window("AI Creator", save_layout, icon=os.path.dirname(
+        os.path.abspath(__file__)).replace("\\", "/") + "/Images/icon.ico").Finalize()
 
     while True:
         event, values = save_window.read()
@@ -50,8 +51,14 @@ def window(model, input_values):
 
             with open(save_path + "/" + file_name + ".model", 'wb') as file:
                 pkl.dump(model, file)
-            with open(save_path + "/" + file_name, 'wb') as file:
-                pkl.dump(input_values, file)
+            try:
+                with open(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/saved models/" + file_name, 'wb') as file:
+                    pkl.dump(input_values, file)
+            except:
+                os.mkdir(os.path.dirname(os.path.abspath(__file__)
+                                         ).replace("\\", "/") + "/saved models")
+                with open(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/saved models/" + file_name, 'wb') as file:
+                    pkl.dump(input_values, file)
 
             save_window.close()
             break

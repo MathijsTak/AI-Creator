@@ -22,15 +22,9 @@ def save_json(file):
         json.dump(theme_var, write_file)
 
 
-def getcolumns(path):
-    with open(path) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        list_of_column_names = []
-        for row in csv_reader:
-            list_of_column_names.append(row)
-            break
-
-    return list_of_column_names[0]
+def menu():
+    return ['&File', ['New File', 'Open', 'Save', '---', 'Close']], ['Settings', ['Theme',
+                                                                                  'Other Settings']], ['Train', ['Train', 'Epochtrain', '---', 'Plot']], ['Help', ['Help']]
 
 
 def home_column():
@@ -115,7 +109,7 @@ def open_column(dataset_values):
             sg.FileBrowse(file_types=(("Model Files", ".model"),))
         ],
         [
-            sg.Text("Model accuracy:"),
+            sg.Text("Mean absolute error:"),
             sg.Text("", visible=False, key="accuracy")
         ]
     ]
@@ -155,10 +149,10 @@ def theme_column():
 
 def settings_column(file_name):
     settings = open_json()
-    datanodes = settings[file_name]["datanodes"]
+    df_columns = settings[file_name]["df_columns"]
     encode = settings[file_name]["encode"]
     checkboxes = []
-    for x in datanodes:
+    for x in df_columns:
         if x in encode:
             checkboxes.append(sg.Checkbox(x, default=True, key=("encode", x)))
         else:

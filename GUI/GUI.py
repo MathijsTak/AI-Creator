@@ -7,18 +7,9 @@ import save_window
 import choose_data_window
 import json
 import webbrowser
-import csv
 import os
 
-
-def getcolumns(df):
-    csv_reader = csv.reader(df, delimiter=',')
-    list_of_column_names = []
-    for row in csv_reader:
-        list_of_column_names.append(row)
-        break
-
-    return list_of_column_names[0]
+# Basic functions to load and save the settings.json file
 
 
 def open_json():
@@ -27,43 +18,45 @@ def open_json():
     return settings
 
 
-def save_json(file):
+def save_json(file, position, update):
+    position.update(update)
     theme_var = json.loads(str(file).replace("'", '"'))
     with open("settings.json", "w",) as write_file:
         json.dump(theme_var, write_file)
 
 
+# Some starting variabled to run the program
 trainer = "MLPR"
+df_name = None
 
-menu_def = ['&File', ['New File', 'Open', 'Save', '---', 'Close']], ['Settings', ['Theme',
-                                                                                  'Other Settings']], ['Train', ['Train', 'Epochtrain', '---', 'Plot']], ['Help', ['Help']]
-
-
-# ----- menubar and columns -----
-
-# Defining the layout for the window
 while True:
-    datanodes, file_name, df, label, mapping, dataset_values = choose_data_window.window()
+    if choose_data_window.window() == False:  # If user closes the program on first startup close the whole program
+        break
+    #
+    df_name, df, df_label, df_mapping, df_columns = choose_data_window.window()
     settings = open_json()
+
+    # Retrieving the currend theme of the program
     theme = settings["theme"]
     themes = settings["themes"]
     sg.theme(themes[theme]["theme"])
     bgc = themes[theme]["bgc"]
     tc = themes[theme]["tc"]
 
+    # Creating the layout for the program
     layout = [
         [
-            sg.Menu(menu_def, background_color=bgc,
+            sg.Menu(columns.menu(), background_color=bgc,
                     text_color=tc, font='verdana')
         ],
         [
             sg.Column(columns.home_column(), key="home", visible=True),
-            sg.Column(columns.new_file_column(dataset_values, label),
+            sg.Column(columns.new_file_column(df_columns, df_label),
                       key="new file", visible=False),
-            sg.Column(columns.open_column(dataset_values),
+            sg.Column(columns.open_column(df_columns),
                       key="open", visible=False),
             sg.Column(columns.theme_column(), key="theme", visible=False),
-            sg.Column(columns.settings_column(file_name),
+            sg.Column(columns.settings_column(df_name),
                       key="settings", visible=False),
 
         ],
@@ -74,10 +67,11 @@ while True:
                        icon=os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/Images/icon.ico").Finalize()
     window.Maximize()
 
+    # Start the window
     while True:
         event, values = window.read()
 
-        if event == sg.WIN_CLOSED:
+        if event == sg.WIN_CLOSED:  # If user closes program close program
             break
 
         # ----- New file column -----
@@ -101,16 +95,16 @@ while True:
         # ----- Open file column -----
         if event == "open file":
             file_path = values["open file"]
-            if file_path != '':
+            if file_path != '':  # Check if the user selected a file
                 with open(file_path, "rb") as file:
                     model = pkl.load(file)
-                file_name = file_path.split("/")[-1]
-                file_name = file_name.replace(".model", "")
-                with open("C:/AI Creator/" + file_name, "rb") as file:
+                df_name = file_path.split("/")[-1]
+                df_name = df_name.replace(".model", "")
+                with open(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/saved models/" + df_name, "rb") as file:
                     input_values = pkl.load(file)
                 window["accuracy"].update(
-                    str(model.accuracy * 100) + " %", visible=True)
-                for x in dataset_values:
+                    str(model.accuracy), visible=True)
+                for x in df_columns:
                     if x in input_values:
                         window[("input " + x)].update(disabled=False)
                     else:
@@ -180,8 +174,7 @@ while True:
             # wanneer wit
             for x in themes:
                 if values[("-IN-", x)] == True:
-                    settings.update({"theme": x})
-                    save_json(settings)
+                    save_json(settings, settings, {"theme": x})
             break
 
         # Other Settings
@@ -193,43 +186,40 @@ while True:
             window["settings"].update(visible=True)
 
         if event == "default save folder":
-            settings.update(
-                {"default save folder": values["default save folder"]})
-            save_json(settings)
+            save_json(
+                settings, settings, {"default save folder": values["default save folder"]})
 
         if event == "remove default save folder":
             window["default save folder"].update("")
-            settings.update(
-                {"default save folder": ""})
-            save_json(settings)
+            save_json(settings, settings, {"default save folder": ""})
 
         if event == "data_path":
             old_data_path = data_path
             data_path = values["data_path"]
             if data_path != old_data_path:
-                file_name = data_path.split("/")[-1]
-                if file_name in settings:
-                    file_name = data_path.split(
-                        "/")[-1]  # Extract the file_name
+                df_name = data_path.split("/")[-1]
+                if df_name in settings:
+                    df_name = data_path.split(
+                        "/")[-1]  # Extract the df_name
                     # Create a dataframe of the file
                     df = pd.read_csv(data_path)
                     # All the values that need encoding will be encoded.
-                    encode_columns = settings[file_name]["encode"]
+                    encode_columns = settings[df_name]["encode"]
                     df = zeroone.OHencoding(df, encode_columns)
-                    datanodes = df.columns
-                    label = settings[file_name]["label"]
-                    dataset_values = []
-                    for x in datanodes:
-                        if x != label:
-                            dataset_values.append(x)
-                    for x in datanodes:
-                        mapping = settings[file_name]["mapping"]
+                    df_label = settings[df_name]["df_label"]
+                    df_columns = []
+                    for x in list(df):
+                        if x != df_label:
+                            df_columns.append(x)
+                    for x in list(df):
+                        df_mapping = settings[df_name]["df_mapping"]
                         try:
-                            settings[file_name]["mapping"][x]
+                            settings[df_name]["df_mapping"][x]
                         except:
-                            mapping.update({x: {"min": 0, "max": 1}})
-                    settings.update({"dataset": data_path})
-                    save_json(settings)
+                            save_json(settings, df_mapping, {
+                                      x: {"min": 0, "max": 1}})
+
+                    save_json(settings, settings, {"dataset": data_path})
                 else:
                     sg.PopupError("Data is not supported",
                                   title="Unsupported data")
@@ -238,21 +228,20 @@ while True:
                     "No data selected or same data selected", title="Data error")
 
         if event == "Restart":
-            dataset = settings[file_name]
-            old_datanodes = settings[file_name]["datanodes"]
+            dataset = settings[df_name]
+            old_df_columns = settings[df_name]["old_df_columns"]
             encode_columns = []
-            for i in old_datanodes:
+            for i in old_df_columns:
                 if values[("encode", i)] == True:
                     encode_columns.append(i)
-            dataset.update({"encode": encode_columns})
-            save_json(settings)
+            save_json(settings, dataset, {"encode": encode_columns})
             break
 
         # Train
         if event == "Train":
             # Input values
             input_values = []
-            for i in datanodes:
+            for i in list(df):
                 try:
                     if values[i] == True:
                         input_values.append(i)
@@ -273,13 +262,13 @@ while True:
                     # Training
                     if trainer == "MLPR":
                         model = MLPRegressor(
-                            df, input_values, label, mapping=mapping)
+                            df, input_values, df_label, mapping=df_mapping)
                         sg.PopupQuickMessage("Training...", font=("Any 20"))
                         model.train(hidden_layer_sizes)
                         sg.PopupQuickMessage("Done", font=("Any 20"))
                     if trainer == "MLPC":
                         model = MLPClassifier(
-                            df, input_values, label, mapping=mapping)
+                            df, input_values, df_label, mapping=df_mapping)
                         sg.PopupQuickMessage("Training...", font=("Any 20"))
                         model.train(hidden_layer_sizes)
                         sg.PopupQuickMessage("Done", font=("Any 20"))
@@ -289,7 +278,7 @@ while True:
                     window["open"].update(visible=True)
                     window["accuracy"].update(
                         str(model.accuracy), visible=True)
-                    for x in dataset_values:
+                    for x in df_columns:
                         if x in input_values:
                             window[("input " + x)].update(disabled=False)
                         else:
@@ -297,7 +286,7 @@ while True:
                     window["predict"].update(disabled=False)
                 elif trainer == "LR":
                     model = LogisticRegressor(
-                        df, input_values, label, mapping=mapping)
+                        df, input_values, df_label, mapping=df_mapping)
                     sg.PopupQuickMessage("Training...", font=("Any 20"))
                     model.train()
                     sg.PopupQuickMessage("Done", font=("Any 20"))
@@ -307,7 +296,7 @@ while True:
                     window["open"].update(visible=True)
                     window["accuracy"].update(
                         str(model.accuracy), visible=True)
-                    for x in dataset_values:
+                    for x in df_columns:
                         if x in input_values:
                             window[("input " + x)].update(disabled=False)
                         else:
@@ -323,7 +312,7 @@ while True:
         if event == "Epochtrain":
             # Input values
             input_values = []
-            for i in datanodes:
+            for i in list(df):
                 try:
                     if values[i] == True:
                         input_values.append(i)
@@ -357,13 +346,13 @@ while True:
                         if isinstance(num_data, int) == True:
                             if trainer == "MLPR":
                                 model = MLPRegressor(
-                                    df, input_values, label, mapping=mapping)
+                                    df, input_values, df_label, df_mapping=df_mapping)
                             elif trainer == "MLPC":
                                 model = MLPClassifier(
-                                    df, input_values, label, mapping=mapping)
+                                    df, input_values, df_label, df_mapping=df_mapping)
                             elif trainer == "LR":
                                 model = LogisticRegressor(
-                                    df, input_values, label, mapping=mapping)
+                                    df, input_values, df_label, df_mapping=df_mapping)
 
                             sg.PopupQuickMessage(
                                 "Training...", font=("Any 20"))
@@ -406,5 +395,5 @@ while True:
 
     if event == sg.WIN_CLOSED:
         break
-
-window.Close()
+if df_name != None:
+    window.Close()

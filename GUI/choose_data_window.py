@@ -3,6 +3,7 @@ import json
 import csv
 import pandas as pd
 import zeroone
+import os
 
 
 def open_json():
@@ -11,7 +12,8 @@ def open_json():
     return settings
 
 
-def save_json(file):
+def save_json(file, position, update):
+    position.update(update)
     theme_var = json.loads(str(file).replace("'", '"'))
     with open("settings.json", "w",) as write_file:
         json.dump(theme_var, write_file)
@@ -36,65 +38,62 @@ def window():
         ]
 
         choose_data_window = sg.Window(
-            "AI Creator", choose_data_layout, icon='Images/logo.ico').Finalize()
+            "AI Creator", choose_data_layout, icon=os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/Images/icon.ico").Finalize()
 
         while True:
             event, values = choose_data_window.read()
             if event == sg.WIN_CLOSED:
-                break
+                return False
 
             if event == "data":
                 data_path = values["data"]
                 if data_path != '':
-                    file_name = data_path.split(
-                        "/")[-1]  # Extract the file_name
+                    df_name = data_path.split(
+                        "/")[-1]  # Extract the df_name
                     # Create a dataframe of the file
                     df = pd.read_csv(data_path)
-                    dataset = settings[file_name]
-                    dataset.update({"datanodes": list(df)})
+                    dataset = settings[df_name]
+                    dataset.update({"old_df_columns": list(df)})
                     # All the values that need encoding will be encoded.
-                    encode_columns = settings[file_name]["encode"]
+                    encode_columns = settings[df_name]["encode"]
                     df = zeroone.OHencoding(df, encode_columns)
-                    datanodes = df.columns
-                    label = settings[file_name]["label"]
-                    dataset_values = []
-                    for x in datanodes:
-                        if x != label:
-                            dataset_values.append(x)
-                    for x in datanodes:
-                        mapping = settings[file_name]["mapping"]
+                    df_label = settings[df_name]["df_label"]
+                    df_columns = []
+                    for x in list(df):
+                        if x != df_label:
+                            df_columns.append(x)
+                    for x in list(df):
+                        df_mapping = settings[df_name]["df_mapping"]
                         try:
-                            settings[file_name]["mapping"][x]
+                            df_mapping[x]
                         except:
-                            mapping.update({x: {"min": 0, "max": 1}})
-                    settings.update({"dataset": data_path})
-                    save_json(settings)
+                            save_json(settings, df_mapping, {
+                                      x: {"min": 0, "max": 1}})
+                    save_json(settings, settings, {"dataset": data_path})
                     choose_data_window.Close()
-                    return datanodes, file_name, df, label, mapping, dataset_values
+                    return df_name, df, df_label, df_mapping, df_columns
                 else:
                     sg.PopupError("No data selected", title="Data error")
 
     else:
         data_path = settings["dataset"]  # Get the path of the dataset
-        file_name = data_path.split("/")[-1]  # Extract the file_name
+        df_name = data_path.split("/")[-1]  # Extract the df_name
         df = pd.read_csv(data_path)  # Create a dataframe of the file
-        dataset = settings[file_name]
-        dataset.update({"datanodes": list(df)})
+        dataset = settings[df_name]
+        save_json(settings, dataset, {"old_df_columns": list(df)})
         # All the values that need encoding will be encoded.
-        encode_columns = settings[file_name]["encode"]
+        encode_columns = settings[df_name]["encode"]
         df = zeroone.OHencoding(df, encode_columns)
-        datanodes = df.columns
-        label = settings[file_name]["label"]
-        dataset_values = []
-        for x in datanodes:
-            if x != label:
-                dataset_values.append(x)
-        for x in datanodes:
-            mapping = settings[file_name]["mapping"]
+        df_label = settings[df_name]["df_label"]
+        df_columns = []
+        for x in list(df):
+            if x != df_label:
+                df_columns.append(x)
+        for x in list(df):
+            df_mapping = settings[df_name]["df_mapping"]
             try:
-                settings[file_name]["mapping"][x]
+                settings[df_name]["df_mapping"][x]
             except:
-                mapping.update({x: {"min": 0, "max": 1}})
-        settings.update({"dataset": data_path})
-        save_json(settings)
-        return datanodes, file_name, df, label, mapping, dataset_values
+                save_json(settings, df_mapping, {x: {"min": 0, "max": 1}})
+        save_json(settings, settings, {"dataset": data_path})
+        return df_name, df, df_label, df_mapping, df_columns
