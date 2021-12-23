@@ -39,6 +39,7 @@ What we discovered was that the factors that can improve the chance of a heart f
 We made a program that is able to create and train a model and then predict unknown data
 
 ### Installation
+- Installing using the exe installer isn't available with the current release. Check release details for more info.
 - Download the latest release (you can use the zip or exe file)
 - Extract the zip file on your computer or install the program using the exe file
 - Find the installation folder or where you extracted the zip file and open GUI.exe
