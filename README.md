@@ -22,7 +22,7 @@ With this program we tried to predict heart failure. We did this by creating a p
 We hope you enjoy checking out our work!
 
 ## Introduction
-Heart failure is one of the most common causes of death. Those affected often aren't aware they are at risk. With this program we try to show people whether it is likely that they will develop heart failure. Hopefully the program can stimulate more people to go see a doctor when necessary. This mighth result in less deaths caused by heart failure. 
+Heart failure is one of the most common causes of death. Those affected often aren't aware they are at risk. With this program we try to show people whether it is likely that they will develop heart failure. Hopefully the program can stimulate more people to go see a doctor when necessary. This might result in less deaths caused by heart failure. 
 
 ## Description of what is already known
 ### What is an AI
