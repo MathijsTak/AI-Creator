@@ -77,7 +77,7 @@ Secondly, to improve the accuracy of the AI, we collected all the minimums and m
 Every programmer knows that buggs come with developing a program, but some bugs could have been prevented. Like the bugs where the naming of the variables where the reason. As an example there was some confusion when changing some variables in the program. Also there where some large bugs, some resulted in the datasets that couldn't be opened but this was easily resolved when the issue was found.
 
 ## Credits
-
+We would like to thank Mr. Postma for guiding us through the process of building this program. In addition we want to thank Mr. Gijsbers for providing us with useful information about the heart. Finally we want to thank Dinand Wesdorp for his help in the development of the GUI. 
 
 ## Citation
 - scikit-learn (new BSD) https://pypi.org/project/scikit-learn/
