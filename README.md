@@ -17,7 +17,7 @@
 - [Citation](https://github.com/MathijsTak/Pacemaker-ai#citation)
 
 ## Preface
-With this program we try to predict heart failure. We do this by creating a program that is able to create an AI and then use it to predict unkown data. We chose to do this because heart failure terrible and can lead to death. So we thought that it would be awesome to make an AI that can predict if a heart failure is likely. And no, we are not trying to replace doctors or other medical instruments. We just try to warn people if a heart failure is likely.
+With this program we tried to predict heart failure. We did this by creating a program that is able to create an AI and then use it to predict unkown data. We chose to do this because heart failure terrible and can lead to death. So we thought that it would be awesome to make an AI that can predict if a heart failure is likely. And no, we are not trying to replace doctors or other medical instruments. We just try to warn people if a heart failure is likely.
 
 ## Introduction
 Heart failure is one of the most common causes of death. Those affected often aren't aware they are at risk. With this program we try to show people whether it is likely that they will develop heart failure. Hopefully the program can stimulate more people to go see a doctor when necessary. This mighth result in less deaths caused by heart failure. 
