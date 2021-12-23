@@ -1,7 +1,6 @@
 import numpy as np
 from numpy.core.numeric import tensordot
 import pandas as pd
-import pickle
 import matplotlib.pyplot as matplot
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor as MLPR
@@ -12,9 +11,7 @@ from sklearn.metrics import plot_confusion_matrix
 
 def OHencoding(df, columns):
     for column in columns:
-        print(df)
         df = pd.get_dummies(df, columns=[column], prefix=[column])
-        print(df)
     return df
 
 

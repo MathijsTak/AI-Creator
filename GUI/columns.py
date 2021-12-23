@@ -149,10 +149,10 @@ def theme_column():
 
 def settings_column(file_name):
     settings = open_json()
-    df_columns = settings[file_name]["df_columns"]
+    old_df_columns = settings[file_name]["old_df_columns"]
     encode = settings[file_name]["encode"]
     checkboxes = []
-    for x in df_columns:
+    for x in old_df_columns:
         if x in encode:
             checkboxes.append(sg.Checkbox(x, default=True, key=("encode", x)))
         else:
