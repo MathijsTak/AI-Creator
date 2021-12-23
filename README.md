@@ -14,6 +14,7 @@
 - [Conclusion](https://github.com/MathijsTak/Pacemaker-ai#conclusion)
 - [Reflexion](https://github.com/MathijsTak/Pacemaker-ai#reflection)
 - [Citation](https://github.com/MathijsTak/Pacemaker-ai#citation)
+- [Credits](https://github.com/MathijsTak/Pacemaker-ai#credits
 
 ## Preface
 With this program we try to predict heart failure. We do this by creating a program that is able to create an AI and then use it to predict unkown data. We chose to do this because heart failure terrible and can lead to death. So we thought that it would be awesome to make an AI that can predict if a heart failure is likely. And no, we are not trying to replace doctors or other medical instruments. We just try to warn people if a heart failure is likely.
@@ -74,6 +75,9 @@ The process of this project went very smoothly. Although we ran into a couple is
 Secondly, to improve the accuracy of the AI, we collected all the minimums and maximums of the variables in the dataset. At first it wasn't clear whether we should collect the minimums and maximums of the dataset, or the minimums and maximums in general.
 ### Buggs
 Every programmer knows that buggs come with developing a program, but some bugs could have been prevented. Like the bugs where the naming of the variables where the reason. As an example there was some confusion when changing some variables in the program. Also there where some large bugs, some resulted in the datasets that couldn't be opened but this was easily resolved when the issue was found.
+
+## Credits
+
 
 ## Citation
 - scikit-learn (new BSD) https://pypi.org/project/scikit-learn/
