@@ -13,8 +13,8 @@
   - Settings
 - [Conclusion](https://github.com/MathijsTak/Pacemaker-ai#conclusion)
 - [Reflexion](https://github.com/MathijsTak/Pacemaker-ai#reflection)
-- [Citation](https://github.com/MathijsTak/Pacemaker-ai#citation)
 - [Credits](https://github.com/MathijsTak/Pacemaker-ai#credits)
+- [Citation](https://github.com/MathijsTak/Pacemaker-ai#citation)
 
 ## Preface
 With this program we try to predict heart failure. We do this by creating a program that is able to create an AI and then use it to predict unkown data. We chose to do this because heart failure terrible and can lead to death. So we thought that it would be awesome to make an AI that can predict if a heart failure is likely. And no, we are not trying to replace doctors or other medical instruments. We just try to warn people if a heart failure is likely.
