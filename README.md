@@ -75,7 +75,7 @@ We made a functioning AI that can predict heart failure. However, the AI is very
 ## Reflection
 The process of this project went very smoothly. Although we ran into a couple of issues. Firstly, bugs, we experienced lots of them. (more in detail explanation further down) 
 Secondly, to improve the accuracy of the AI, we collected all the minimums and maximums of the variables in the dataset. At first, it wasn't clear whether we should collect the minimums and maximums of the dataset or the minimums and maximums in general.
-### Buggs
+### Bugs
 Every programmer knows that bugs come with developing a program, but some bugs could have been prevented. Like the bugs where the naming of the variables was the reason. As an example, there was some confusion when changing some variables in the program. Also, there were some large bugs, some resulting in the datasets that couldn't be opened but this was easily resolved when the issue was found.
 
 ## Credits
