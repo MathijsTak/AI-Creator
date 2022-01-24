@@ -147,10 +147,11 @@ def theme_column():
     return column
 
 
-def settings_column(file_name):
+def settings_column(df_name):
     settings = open_json()
-    old_df_columns = settings[file_name]["old_df_columns"]
-    encode = settings[file_name]["encode"]
+    old_df_columns = settings[df_name]["old_df_columns"]
+    encode = settings[df_name]["encode"]
+    label = settings[df_name]["df_label"]
     checkboxes = []
     for x in old_df_columns:
         if x in encode:
@@ -161,17 +162,22 @@ def settings_column(file_name):
 
     column = [
         [
-            sg.Text("Default save folder"),
-            sg.In(settings["default save folder"], size=(25, 1), enable_events=True,
+            sg.Text("Default save folder", size=(20, 1)),
+            sg.In(settings["default save folder"].split("/")[-1], size=(50, 1), enable_events=True,
                   key="default save folder", disabled=True),
             sg.FolderBrowse(),
             sg.Button("Remove", enable_events=True,
                       key="remove default save folder")
         ],
         [
-            sg.Text("Data", size=(10, 1)),
-            sg.In(settings["dataset"], size=(25, 1),
+            sg.Text("Dataset", size=(20, 1)),
+            sg.In(settings["dataset"].split("/")[-1], size=(50, 1),
                   disabled=True, enable_events=True, key="data_path"),
+            sg.FileBrowse(file_types=(("CSV Files", ".csv"),)),
+        ],
+        [
+            sg.Text("Add/change dataset", size=(20, 1)),
+            sg.In(size=(50, 1), disabled=True, enable_events=True, key="new data", visible=False),
             sg.FileBrowse(file_types=(("CSV Files", ".csv"),)),
         ],
         [
@@ -183,6 +189,16 @@ def settings_column(file_name):
         checkboxes,
         [
             sg.HorizontalSeparator()
+        ],
+        [
+            sg.Text("Label"),
+            sg.Combo(old_df_columns, key="new label", default_value=label)
+        ],
+        [
+            sg.HorizontalSeparator()
+        ],
+        [
+            sg.Text("Restart to save changes")
         ],
         [
             sg.Button("Restart", enable_events=True, key="Restart")

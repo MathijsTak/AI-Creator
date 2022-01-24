@@ -5,6 +5,7 @@ from zeroone import *
 import columns
 import save_window
 import choose_data_window
+import add_data_window
 import json
 import webbrowser
 import os
@@ -24,6 +25,43 @@ def save_json(file, position, update):
     with open("settings.json", "w",) as write_file:
         json.dump(theme_var, write_file)
 
+def save_dataset():
+    df_name = data_path.split(
+        "/")[-1]  # Extract the df_name
+    # Create a dataframe of the file
+    df = pd.read_csv(data_path)
+    dataset = settings[df_name]
+    dataset.update({"old_df_columns": list(df)})
+    # All the values that need encoding will be encoded.
+    encode_columns = settings[df_name]["encode"]
+    df = zeroone.OHencoding(df, encode_columns)
+    df_label = settings[df_name]["df_label"]
+    df_columns = []
+    for x in list(df):
+        if x != df_label:
+            df_columns.append(x)
+    for x in list(df):
+        df_mapping = settings[df_name]["df_mapping"]
+        try:
+            settings[df_name]["df_mapping"][x]
+        except:
+            save_json(settings, df_mapping, {
+                        x: {"min": 0, "max": 1}})
+
+    save_json(settings, settings, {"dataset": data_path})
+
+def save_encode(df_name, dataset):
+    old_df_columns = settings[df_name]["old_df_columns"]
+    encode_columns = []
+    for i in old_df_columns:
+        if values[("encode", i)] == True:
+            encode_columns.append(i)
+    save_json(settings, dataset, {"encode": encode_columns})
+
+def save_label(dataset):
+            new_label = values["new label"]
+            save_json(settings, dataset, {"df_label": new_label})
+
 
 # Some starting variabled to run the program
 trainer = "MLPR"
@@ -32,8 +70,8 @@ df_name = None
 while True:
     if choose_data_window.window() == False:  # If user closes the program on first startup close the whole program
         break
-    #
-    df_name, df, df_label, df_mapping, df_columns = choose_data_window.window()
+    # Let the user pick a dataset and then save the dataset information
+    df_name, df, df_label, df_mapping, df_columns, data_path = choose_data_window.window()
     settings = open_json()
 
     # Retrieving the currend theme of the program
@@ -95,7 +133,7 @@ while True:
         # ----- Open file column -----
         if event == "open file":
             file_path = values["open file"]
-            if file_path != '':  # Check if the user selected a file
+            if file_path != '':
                 with open(file_path, "rb") as file:
                     model = pkl.load(file)
                 df_name = file_path.split("/")[-1]
@@ -171,7 +209,6 @@ while True:
             window["settings"].update(visible=False)
 
         if event == 'Save setting':
-            # wanneer wit
             for x in themes:
                 if values[("-IN-", x)] == True:
                     save_json(settings, settings, {"theme": x})
@@ -188,6 +225,8 @@ while True:
         if event == "default save folder":
             save_json(
                 settings, settings, {"default save folder": values["default save folder"]})
+            save_folder = values["default save folder"].split("/")[-1]
+            window["default save folder"].update(save_folder)
 
         if event == "remove default save folder":
             window["default save folder"].update("")
@@ -197,45 +236,51 @@ while True:
             old_data_path = data_path
             data_path = values["data_path"]
             if data_path != old_data_path:
-                df_name = data_path.split("/")[-1]
-                if df_name in settings:
-                    df_name = data_path.split(
-                        "/")[-1]  # Extract the df_name
-                    # Create a dataframe of the file
-                    df = pd.read_csv(data_path)
-                    # All the values that need encoding will be encoded.
-                    encode_columns = settings[df_name]["encode"]
-                    df = zeroone.OHencoding(df, encode_columns)
-                    df_label = settings[df_name]["df_label"]
-                    df_columns = []
-                    for x in list(df):
-                        if x != df_label:
-                            df_columns.append(x)
-                    for x in list(df):
-                        df_mapping = settings[df_name]["df_mapping"]
-                        try:
-                            settings[df_name]["df_mapping"][x]
-                        except:
-                            save_json(settings, df_mapping, {
-                                      x: {"min": 0, "max": 1}})
-
-                    save_json(settings, settings, {"dataset": data_path})
-                else:
+                local_df_name = data_path.split("/")[-1]
+                print(local_df_name)
+                if local_df_name not in settings:
                     sg.PopupError("Data is not supported",
                                   title="Unsupported data")
+                else:
+                    window["data_path"].update(local_df_name)
             else:
                 sg.PopupError(
                     "No data selected or same data selected", title="Data error")
+        
+        if event == "new data":
+            new_data_path = values["new data"]
+            new_df = pd.read_csv(new_data_path)
+            new_df_name = new_data_path.split("/")[-1]
+            new_df_columns = [
+                [
+                    sg.Text("Column name", size=(17, 1)),
+                    sg.Text("Min value", size=(15, 1)),
+                    sg.Text("Max value", size=(15, 1)),
+                    sg.Text("Encode value", size=(15, 1))
+                ]
+            ]
+            for x in list(new_df):
+                new_df_columns.append([sg.Text(x, size=(17, 1))])
+            counter = 1
+            for x in list(new_df):
+                new_df_columns[counter].append(sg.In(key=("min", x), size=(17, 1)))
+                new_df_columns[counter].append(sg.In(key=("max", x), size=(17, 1)))
+                new_df_columns[counter].append(sg.Checkbox("", key=("checkbox", x), size=(17, 1)))
+                counter += 1
+            new_df_columns.append([sg.Text("Label"), sg.Combo(list(new_df), key="new label")])
+
+            add_data_window.window(new_df, new_df_columns, new_df_name)
 
         if event == "Restart":
             dataset = settings[df_name]
-            old_df_columns = settings[df_name]["old_df_columns"]
-            encode_columns = []
-            for i in old_df_columns:
-                if values[("encode", i)] == True:
-                    encode_columns.append(i)
-            save_json(settings, dataset, {"encode": encode_columns})
+            save_encode(df_name, dataset)
+            save_label(dataset)
+            save_dataset()
             break
+
+        # Add dataset
+        if event == "Add dataset":
+            sg.PopupError(title="Feature comming soon")
 
         # Train
         if event == "Train":

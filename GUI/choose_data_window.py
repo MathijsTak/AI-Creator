@@ -71,7 +71,7 @@ def window():
                                       x: {"min": 0, "max": 1}})
                     save_json(settings, settings, {"dataset": data_path})
                     choose_data_window.Close()
-                    return df_name, df, df_label, df_mapping, df_columns
+                    return df_name, df, df_label, df_mapping, df_columns, data_path
                 else:
                     sg.PopupError("No data selected", title="Data error")
 
@@ -96,4 +96,4 @@ def window():
             except:
                 save_json(settings, df_mapping, {x: {"min": 0, "max": 1}})
         save_json(settings, settings, {"dataset": data_path})
-        return df_name, df, df_label, df_mapping, df_columns
+        return df_name, df, df_label, df_mapping, df_columns, data_path
