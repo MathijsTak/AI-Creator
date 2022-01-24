@@ -1,3 +1,7 @@
+# GUI v0.3-unstable
+- Added an option to add a dateset through settings (testing fase)
+- Some minor changes
+
 # GUI v0.2.2
 This is update is largely because the code got an overhaul.
 While doing this there were some bugs in the program that are now fixed.
