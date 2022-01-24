@@ -1,5 +1,5 @@
 # GUI v0.3-unstable
-- Added an option to add a dateset through settings (testing fase)
+- Added an option to add a dataset through settings (testing phase)
 - Some minor changes
 
 # GUI v0.2.2
