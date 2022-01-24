@@ -12,7 +12,7 @@
   - Available datasets
   - Settings
 - [Conclusion](https://github.com/MathijsTak/Pacemaker-ai#conclusion)
-- [Reflexion](https://github.com/MathijsTak/Pacemaker-ai#reflection)
+- [Reflecion](https://github.com/MathijsTak/Pacemaker-ai#reflection)
 - [Credits](https://github.com/MathijsTak/Pacemaker-ai#credits)
 - [Citation](https://github.com/MathijsTak/Pacemaker-ai#citation)
 
@@ -26,7 +26,7 @@ Heart failure is one of the most common causes of death. Those affected often ar
 
 ## Description of what is already known
 ### What is an AI
-Artificial Intelligence (AI) is nothing more than a computer trying to imitate human intelligence. AI includes Machine Learning and deep learning. Both can be used for different purposes. For example, deep learning will work better if more data is available. Because processing this large amount of data requires a high-end machine.
+Artificial Intelligence (AI) is nothing more than a computer trying to imitate human intelligence. AI includes Machine Learning and deep learning. Both can be used for different purposes. For example, deep learning will work better if more data is available. Processing a large amount of data requires a high-end machine.
 
 A machine learning model consists of neurons and weights. While learning, the computer will adjust these weights to get higher accuracy. The neurons are divided into three categories the input layer, hidden layer, and the output layer. The input layer is your input values, and the output layer is the prediction. The hidden layers can be adjusted to get better accuracy. 
 
@@ -34,7 +34,7 @@ For more information on how a neural network works click [here](https://www.ibm.
 
 
 ## Own research
-To know more about heart failure, we did some research on the heart. We learned how to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
+To know more about heart failure, we did some research on the heart. How to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
 
 What we discovered is that the factors that can affect the probability of heart failure are in line with the datasets we use in the program. Most values in the dataset   
 
@@ -74,7 +74,7 @@ We made a functioning AI that can predict heart failure. However, the AI is very
 
 ## Reflection
 The process of this project went very smoothly. Although we ran into a couple of issues. Firstly, bugs, we experienced lots of them. (more in detail explanation further down) 
-Secondly, to improve the accuracy of the AI, we collected all the minimums and maximums of the variables in the dataset. At first, it wasn't clear whether we should collect the minimums and maximums of the dataset or the minimums and maximums in general.
+Secondly, when the AI was transferring every single value into a value it can understand. This resulted in data nodes that contained numbers like 1,2,3,4 being interpreted by the program as 4 is better than 1 or 1 is better than 4. This was in some cases not good so to improve the accuracy of the AI, we made an option in the program to split those values into data nodes. For example, one data node contained four values (1,2,3,4) this was transferred to four data nodes each containing zero or one (true or false).
 ### Bugs
 Every programmer knows that bugs come with developing a program, but some bugs could have been prevented. Like the bugs where the naming of the variables was the reason. As an example, there was some confusion when changing some variables in the program. Also, there were some large bugs, some resulting in the datasets that couldn't be opened but this was easily resolved when the issue was found.
 
