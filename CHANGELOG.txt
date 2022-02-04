@@ -1,3 +1,6 @@
+# GUI v0.3.1
+- The option to add a dataset through settings has been testen and is now working correctly.
+
 # GUI v0.3-unstable
 - Added an option to add a dataset through settings (testing phase)
 - Some minor changes
