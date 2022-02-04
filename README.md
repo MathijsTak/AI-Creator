@@ -36,6 +36,9 @@ For more information on how a neural network works click [here](https://www.ibm.
 ## Own research
 To know more about heart failure, we did some research on the heart. How to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
 
+### Expiriments
+
+
 What we discovered is that the factors that can affect the probability of heart failure are in line with the datasets we use in the program. Most values in the dataset   
 
 ## Product
@@ -88,4 +91,4 @@ We would like to thank Mr. Postma for guiding us through the process of building
 - numpy (BSD License (BSD)) https://github.com/numpy/numpy/blob/main/LICENSE.txt
 - zeroone-ai (MIT) https://github.com/MathijsTak/ZeroOneAi
 - PySimpleGUI (GNU Lesser General Public License v3.0) https://github.com/PySimpleGUI/PySimpleGUI/blob/master/license.txt
-- Dinand Wesdorp (Played a part in developing the GUI)
+- Dinand Wesdorp (Played a role in developing the GUI)
