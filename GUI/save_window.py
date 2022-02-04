@@ -45,6 +45,9 @@ def window(model, input_values):
         if event == sg.WIN_CLOSED:
             break
 
+        if event == "save folder":
+            save_window["save folder"].update(values["save folder"].split("/")[-1])
+
         if event == "save":
             file_name = values["file name"]
             save_path = values["save folder"]

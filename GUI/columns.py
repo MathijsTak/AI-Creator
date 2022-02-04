@@ -1,7 +1,5 @@
 import PySimpleGUI as sg
-import os.path
 import pickle as pkl
-import csv
 from tkinter.constants import X
 from typing import Text
 from PySimpleGUI.PySimpleGUI import I

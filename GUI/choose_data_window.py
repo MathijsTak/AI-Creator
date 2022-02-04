@@ -1,6 +1,5 @@
 import PySimpleGUI as sg
 import json
-import csv
 import pandas as pd
 import zeroone
 import os

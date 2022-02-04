@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPRegressor as MLPR
 from sklearn.linear_model import LogisticRegression as LR
 from sklearn.neural_network import MLPClassifier as MLPC
-from sklearn.metrics import plot_confusion_matrix
 
 
 def OHencoding(df, columns):

@@ -1,9 +1,7 @@
 import PySimpleGUI as sg
 import json
-import csv
-import pandas as pd
-import zeroone
 import os
+import csv
 
 def open_json():
     with open('settings.json', 'r') as f:
@@ -23,6 +21,9 @@ def window(df, df_columns, df_name):
         
         [
             sg.Column(df_columns, scrollable=True, size=(1000,500)),
+        ],
+        [
+            sg.Text("", key="error")
         ],
         [
             sg.Button("Add", enable_events=True, key="add dataset")
@@ -64,5 +65,23 @@ def window(df, df_columns, df_name):
                 except:
                     min = 0
                     max = 1
-                    error.append(x)
+                    if values[("checkbox", x)] == False:
+                        error.append(x)
                 save_json(settings, settings[df_name]["df_mapping"], {x: {"min": min, "max": max}})
+
+            if error != []:
+                add_data_window["error"].update("Not all minimum and maximum values have been updated")
+            else:
+                add_data_window["error"].update("All minimum and maximum values have been updated")
+
+            for x in error:
+                add_data_window[("error", x)].update("This value wasn't a float and encode is false")
+
+        for x in (df):
+            if event == ("min", x):
+                if window[("min", x)] == str(df[x].min()):
+                    window[("min", x)].update("")
+
+            if event == ("max", x):
+                if window[("max", x)] == str(df[x].max()):
+                    window[("max", x)].update("")

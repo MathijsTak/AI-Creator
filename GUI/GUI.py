@@ -12,7 +12,6 @@ import os
 
 # Basic functions to load and save the settings.json file
 
-
 def open_json():
     with open('settings.json', 'r') as f:
         settings = json.load(f)
@@ -61,6 +60,29 @@ def save_encode(df_name, dataset):
 def save_label(dataset):
             new_label = values["new label"]
             save_json(settings, dataset, {"df_label": new_label})
+
+def autosave(model, input_values, settings):
+    save_path = settings["default save folder"]
+    if save_path != "":
+        x = ""
+        i = 1
+        try:
+            while True:
+                with open(save_path + "/" + str(input_values) + "-autosave" + x + ".model", 'rb') as file:
+                    pkl.load(file)
+                x = "(" + str(i) + ")"
+                i += 1
+        except:
+            with open(save_path + "/" + str(input_values) + "-autosave" + x + ".model", 'wb') as file:
+                pkl.dump(model, file)
+            try:
+                with open(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/saved models/" + str(input_values) + "-autosave" + x, 'wb') as file:
+                    pkl.dump(input_values, file)
+            except:
+                os.mkdir(os.path.dirname(os.path.abspath(__file__)
+                                        ).replace("\\", "/") + "/saved models")
+                with open(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/saved models/" + str(input_values) + "-autosave" + x, 'wb') as file:
+                    pkl.dump(input_values, file)
 
 
 # Some starting variabled to run the program
@@ -263,9 +285,10 @@ while True:
                 new_df_columns.append([sg.Text(x, size=(17, 1))])
             counter = 1
             for x in list(new_df):
-                new_df_columns[counter].append(sg.In(key=("min", x), size=(17, 1)))
-                new_df_columns[counter].append(sg.In(key=("max", x), size=(17, 1)))
-                new_df_columns[counter].append(sg.Checkbox("", key=("checkbox", x), size=(17, 1)))
+                new_df_columns[counter].append(sg.In(default_text=str(df[x].min()), key=("min", x), size=(17, 1)))
+                new_df_columns[counter].append(sg.In(default_text=str(df[x].max()), key=("max", x), size=(17, 1)))
+                new_df_columns[counter].append(sg.Checkbox("", key=("checkbox", x), size=(5, 1)))
+                new_df_columns[counter].append(sg.Text("", key=("error", x)))
                 counter += 1
             new_df_columns.append([sg.Text("Label"), sg.Combo(list(new_df), key="new label")])
 
@@ -284,6 +307,7 @@ while True:
 
         # Train
         if event == "Train":
+            settings = open_json()
             # Input values
             input_values = []
             for i in list(df):
@@ -329,6 +353,7 @@ while True:
                         else:
                             window[("input " + x)].update("", disabled=True)
                     window["predict"].update(disabled=False)
+                    autosave(model, input_values, settings)
                 elif trainer == "LR":
                     model = LogisticRegressor(
                         df, input_values, df_label, mapping=df_mapping)
@@ -347,6 +372,7 @@ while True:
                         else:
                             window[("input " + x)].update("", disabled=True)
                     window["predict"].update(disabled=False)
+                    autosave(model, input_values, settings)
                 else:
                     sg.PopupError(
                         "Hidden layer sizes are not correctly filled in", title="Error")
