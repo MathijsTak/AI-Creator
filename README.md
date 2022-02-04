@@ -36,7 +36,7 @@ For more information on how a neural network works click [here](https://www.ibm.
 ## Own research
 To know more about heart failure, we did some research on the heart. How to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
 
-### Expiriments
+### Experiments
 
 
 What we discovered is that the factors that can affect the probability of heart failure are in line with the datasets we use in the program. Most values in the dataset   
