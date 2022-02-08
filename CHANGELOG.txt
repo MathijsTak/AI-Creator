@@ -1,3 +1,6 @@
+# GUI v0.3.1
+This release fixes some bugs and the add data option is now fully operational.
+
 # GUI v0.3-unstable
 - Added an option to add a dataset through settings (testing phase)
 - Some minor changes
