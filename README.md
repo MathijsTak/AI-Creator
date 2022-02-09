@@ -37,7 +37,7 @@ For more information on how a neural network works click [here](https://www.ibm.
 To know more about heart failure, we did some research on the heart. How to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
 
 ### Experiments
-![results.png](https://github.com/MathijsTak/AI-Creator/blob/main/wiki%20pictures/Results.png)
+![results.png](https://github.com/MathijsTak/AI-Creator/blob/main/wiki%20pictures/Results%20experiments.png)
 
 What we discovered is that the factors that can affect the probability of heart failure are in line with the datasets we use in the program. Most values in the dataset have some impact on the result but the best input values are age, gender, ap_hi, ap_lo, cholesterol, and gluc. Also when we removed one of these values as a test, we discovered that this would drastically increase the MAE (mean absolute error).
 
