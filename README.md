@@ -39,7 +39,7 @@ To know more about heart failure, we did some research on the heart. How to hear
 ### Experiments
 ![results.png](https://github.com/MathijsTak/AI-Creator/blob/main/wiki%20pictures/Results.png)
 
-What we discovered is that the factors that can affect the probability of heart failure are in line with the datasets we use in the program. Most values in the dataset have some impact on the result but the best input values are: age, gender, ap_hi, ap_lo, cholesterol and gluc. 
+What we discovered is that the factors that can affect the probability of heart failure are in line with the datasets we use in the program. Most values in the dataset have some impact on the result but the best input values are age, gender, ap_hi, ap_lo, cholesterol, and gluc. Also when we removed one of these values as a test, we discovered that this would drastically increase the MAE (mean absolute error).
 
 ## Product
 We made a program that can create and train a model and then predict unknown data
@@ -69,11 +69,11 @@ We made a program that can create and train a model and then predict unknown dat
 - You can do this by sorting all the lines. I use a VS Code extension for this, and then add your dataset with the input_values, label, and mapping
 - To change the default save folder and the dataset you can either edit the settings.json or inside the application under Settings and then Other Settings.
 
-[Project board](https://github.com/MathijsTak/Pacemaker-ai/projects/1?fullscreen=true)
+[Project board]()
 
 
 ## Conclusion
-We made a functioning AI that can predict heart failure. However, the AI is very basic and only uses 10 different variables in its calculations. The AI does NOT replace any doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
+We made a functioning AI that can predict heart failure. However, the AI is very basic and only uses 10 different variables in its calculations. When we take a look at the results of the experiments we've done, it becomes clear that even though we change some input values the average stays roughly the same. When we change the hidden layers we see that larger hidden layers improve the average result but with this method, it takes longer to create a model. It doesn't improve the average result as well, only by a small margin. It is interesting to see that height and weight are not improving the results. This isn't weird because in this dataset we also have cholesterol. The AI does NOT replace a doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
 
 ## Reflection
 The process of this project went very smoothly. Although we ran into a couple of issues. Firstly, bugs, we experienced lots of them. (more in detail explanation further down) 
