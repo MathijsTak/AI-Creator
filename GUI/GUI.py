@@ -158,9 +158,9 @@ while True:
             if file_path != '':
                 with open(file_path, "rb") as file:
                     model = pkl.load(file)
-                df_name = file_path.split("/")[-1]
-                df_name = df_name.replace(".model", "")
-                with open(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/saved models/" + df_name, "rb") as file:
+                model_name = file_path.split("/")[-1]
+                model_name = model_name.replace(".model", "")
+                with open(os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/saved models/" + model_name, "rb") as file:
                     input_values = pkl.load(file)
                 window["accuracy"].update(
                     str(model.accuracy), visible=True)
@@ -285,8 +285,8 @@ while True:
                 new_df_columns.append([sg.Text(x, size=(17, 1))])
             counter = 1
             for x in list(new_df):
-                new_df_columns[counter].append(sg.In(default_text=str(df[x].min()), key=("min", x), size=(17, 1)))
-                new_df_columns[counter].append(sg.In(default_text=str(df[x].max()), key=("max", x), size=(17, 1)))
+                new_df_columns[counter].append(sg.In(default_text=str(new_df[x].min()), key=("min", x), size=(17, 1)))
+                new_df_columns[counter].append(sg.In(default_text=str(new_df[x].max()), key=("max", x), size=(17, 1)))
                 new_df_columns[counter].append(sg.Checkbox("", key=("checkbox", x), size=(5, 1)))
                 new_df_columns[counter].append(sg.Text("", key=("error", x)))
                 counter += 1

@@ -54,16 +54,18 @@ def home_column():
 
 
 def new_file_column(dataset_values, label):
-    checkboxes = []
+    checkboxes = [[]]
     for x in dataset_values:
-        checkboxes.append(sg.Checkbox(x, default=False, key=x))
+        checkboxes[0].append(sg.Checkbox(x, default=False, key=x))
 
     # Defining menu and columns
     column = [
         [
             sg.Text("Input data", size=(10, 1)),
         ],
-        checkboxes,
+        [
+            sg.Column(checkboxes, scrollable=True)
+        ],
         [
             sg.Text("Label: " + label, size=(15, 1)),
         ],
@@ -113,8 +115,8 @@ def open_column(dataset_values):
     ]
 
     for x in dataset_values:
-        column.append([sg.Text(x, size=(10, 1)), sg.In(
-            key=("input " + x), size=(10, 1), disabled=True)])
+        column.append([sg.Text(x, size=(20, 1)), sg.In(
+            key=("input " + x), size=(15, 1), disabled=True)])
 
     column.append([sg.Button("Predict", disabled=True, key="predict")])
     column.append([sg.Text("Prediction: ", key="prediction")])

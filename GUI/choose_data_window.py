@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import zeroone
 import os
+import add_data_window
 
 
 def open_json():
@@ -51,7 +52,40 @@ def window():
                         "/")[-1]  # Extract the df_name
                     # Create a dataframe of the file
                     df = pd.read_csv(data_path)
-                    dataset = settings[df_name]
+
+                    while True:
+                        settings = open_json()
+                        if df_name in settings:
+                            dataset = settings[df_name]
+                        else:
+                            new_data_path = values["data"]
+                            new_df = pd.read_csv(new_data_path)
+                            new_df_name = new_data_path.split("/")[-1]
+                            new_df_columns = [
+                                [
+                                    sg.Text("Column name", size=(17, 1)),
+                                    sg.Text("Min value", size=(15, 1)),
+                                    sg.Text("Max value", size=(15, 1)),
+                                    sg.Text("Encode value", size=(15, 1))
+                                ]
+                            ]
+                            for x in list(new_df):
+                                new_df_columns.append([sg.Text(x, size=(17, 1))])
+                            counter = 1
+                            for x in list(new_df):
+                                new_df_columns[counter].append(sg.In(default_text=str(df[x].min()), key=("min", x), size=(17, 1)))
+                                new_df_columns[counter].append(sg.In(default_text=str(df[x].max()), key=("max", x), size=(17, 1)))
+                                new_df_columns[counter].append(sg.Checkbox("", key=("checkbox", x), size=(5, 1)))
+                                new_df_columns[counter].append(sg.Text("", key=("error", x)))
+                                counter += 1
+                            new_df_columns.append([sg.Text("Label"), sg.Combo(list(new_df), key="new label")])
+
+                            if add_data_window.window(new_df, new_df_columns, new_df_name) == True:
+                                settings = open_json()
+                                dataset = settings[df_name]
+                                break
+                        
+
                     dataset.update({"old_df_columns": list(df)})
                     # All the values that need encoding will be encoded.
                     encode_columns = settings[df_name]["encode"]

@@ -27,7 +27,7 @@ def window(df, df_columns, df_name):
         ],
         [
             sg.Button("Add", enable_events=True, key="add dataset")
-        ],
+        ]
     ]
 
     add_data_layout = [
@@ -38,10 +38,17 @@ def window(df, df_columns, df_name):
 
     add_data_window = sg.Window("AI Creator", add_data_layout, icon=os.path.dirname(os.path.abspath(__file__)).replace("\\", "/") + "/Images/icon.ico").Finalize()
 
+    returned = False
+
     while True:
         event, values = add_data_window.read()
+        if returned == True:
+            break
         if event == sg.WIN_CLOSED:
-            return False
+            if df_name in settings:
+                return True
+            else:
+                return False
 
         if event == "add dataset":
             save_json(settings, settings, {df_name: {}})
