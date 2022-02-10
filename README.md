@@ -1,5 +1,8 @@
 # Pacemaker AI
 
+![license](https://img.shields.io/badge/license-MIT-green) ![issues](https://img.shields.io/bitbucket/issues-raw/MathijsTak/AI-Creator) ![last commit](https://img.shields.io/github/last-commit/MathijsTak/AI-Creator) ![downloads](https://img.shields.io/github/downloads/MathijsTak/AI-Creator/total)
+
+
 ## Table of contents
 - [Preface](https://github.com/MathijsTak/Pacemaker-ai#preface)
 - [Introduction](https://github.com/MathijsTak/Pacemaker-ai#introduction)
