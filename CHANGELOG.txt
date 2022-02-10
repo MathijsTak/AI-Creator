@@ -1,3 +1,6 @@
+# GUI v0.3.2
+This release fixes some bugs and you are now able to add a dataset add first launch.
+
 # GUI v0.3.1
 This release fixes some bugs and the add data option is now fully operational.
 
