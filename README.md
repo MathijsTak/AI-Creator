@@ -52,6 +52,7 @@ We made a program that can create and train a model and then predict unknown dat
 
 ### How to use
 - Open the file named 'GUI.exe'
+-- If the program gives an error, find the settings.json file open it and save it.
 - When the program starts for the first time you need to select the dataset (csv file) you want to use. (This has to be one of the datasets given below)
 - To create an AI go to File and select New File
 - Here you can set different parameters for the AI
@@ -63,17 +64,15 @@ We made a program that can create and train a model and then predict unknown dat
 - https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
 - https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 - Note: You can [add other datasets](https://github.com/MathijsTak/Pacemaker-ai/wiki/settings.json) in 'Settings.json'
+- After release v0.3 there is an option to add a dataset using the GUI allowing users to easily add a personal dataset.
 
 ### Settings
 - In settings.json are all the available datasets listed and it is possible to add a dataset yourself.
 - You can do this by sorting all the lines. I use a VS Code extension for this, and then add your dataset with the input_values, label, and mapping
 - To change the default save folder and the dataset you can either edit the settings.json or inside the application under Settings and then Other Settings.
 
-[Project board]()
-
-
 ## Conclusion
-We made a functioning AI that can predict heart failure. However, the AI is very basic and only uses 10 different variables in its calculations. When we take a look at the results of the experiments we've done, it becomes clear that even though we change some input values the average stays roughly the same. When we change the hidden layers we see that larger hidden layers improve the average result but with this method, it takes longer to create a model. It doesn't improve the average result as well, only by a small margin. It is interesting to see that height and weight are not improving the results. This isn't weird because in this dataset we also have cholesterol. The AI does NOT replace a doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
+We made a functioning AI that can predict heart failure. However, the AI is very basic and only uses 10 different variables in its calculations. When we take a look at the results of the experiments we've done, it becomes clear that even though we change some input values the average stays roughly the same. When we change the hidden layers we see that larger hidden layers improve the average result but with this method, it takes longer to create a model. It doesn't improve the average result as well, only by a small margin. It is interesting to see that height and weight are not improving the results. This isn't weird because in this dataset we also have cholesterol. Which is a known factor of causing heart failure. The AI does NOT replace a doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
 
 ## Reflection
 The process of this project went very smoothly. Although we ran into a couple of issues. Firstly, bugs, we experienced lots of them. (more in detail explanation further down) 
