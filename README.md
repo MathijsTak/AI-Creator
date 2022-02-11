@@ -64,7 +64,7 @@ We made a program that can create and train a model and then predict unknown dat
 - If you want more information on how to use the program see the Wiki
 
 ### Available datasets
-- https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
+- https://www.kaggle.com/sulianova/cardiovascular-disease-dataset This dataset has to be transformed into a csv file like the dataset below.
 - https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
 - Note: You can [add other datasets](https://github.com/MathijsTak/Pacemaker-ai/wiki/settings.json) in 'Settings.json'
 - After release v0.3 there is an option to add a dataset using the GUI allowing users to easily add a personal dataset.
