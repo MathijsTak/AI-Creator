@@ -37,7 +37,7 @@ For more information on how a neural network works click [here](https://www.ibm.
 
 
 ## Own research
-To know more about heart failure, we did some research on the heart. How to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
+To know more about heart failure, we did some research on the heart. How to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/AI-Creator/blob/main/The%20heart.docx?raw=true)
 
 ### Experiments
 ![results.png](https://github.com/MathijsTak/AI-Creator/blob/main/wiki%20pictures/Results%20experiments.png)
