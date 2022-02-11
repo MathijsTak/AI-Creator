@@ -42,7 +42,7 @@ To know more about heart failure, we did some research on the heart. How to hear
 ### Experiments
 ![results.png](https://github.com/MathijsTak/AI-Creator/blob/main/wiki%20pictures/Results%20experiments.png)
 
-What we discovered is that the factors that can affect the probability of heart failure are in line with the datasets we use in the program. Most values in the dataset have some impact on the result but the best input values are age, gender, ap_hi, ap_lo, cholesterol, and gluc. Also when we removed one of these values as a test, we discovered that this would drastically increase the MAE (mean absolute error).
+We discovered that most values in the dataset have some impact on the result but the best input values are age, gender, ap_hi, ap_lo, cholesterol, and gluc. Also when we removed one of these values as a test and we discovered that this would drastically increase the MAE (mean absolute error).
 
 ## Product
 We made a program that can create and train a model and then predict unknown data
@@ -75,7 +75,8 @@ We made a program that can create and train a model and then predict unknown dat
 - To change the default save folder and the dataset you can either edit the settings.json or inside the application under Settings and then Other Settings.
 
 ## Conclusion
-We made a functioning AI that can predict heart failure. However, the AI is very basic and only uses 10 different variables in its calculations. When we take a look at the results of the experiments we've done, it becomes clear that even though we change some input values the average stays roughly the same. When we change the hidden layers we see that larger hidden layers improve the average result but with this method, it takes longer to create a model. It doesn't improve the average result as well, only by a small margin. It is interesting to see that height and weight are not improving the results. This isn't weird because in this dataset we also have cholesterol. Which is a known factor of causing heart failure. The AI does NOT replace a doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
+We made a functioning AI that can predict heart failure. However, the AI is very basic and only uses 10 different variables in its calculations. When we take a look at the results of the experiments we've done, it becomes clear that even though we change some input values the average stays roughly the same. When we change the hidden layers we see that larger hidden layers improve the average result but with this method, it takes longer to create a model. It also doesn't greatly improve the average result, only by a small margin. It is interesting to see that height and weight are not improving the results. But when you think about it, it isn't weird. Because in the dataset we used there is a value cholestorol, height and weight aren't important anymore. Cholestorol is also a known factor of causing heart failure.
+A note: the AI does NOT replace a doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
 
 ## Reflection
 The process of this project went very smoothly. Although we ran into a couple of issues. Firstly, bugs, we experienced lots of them. (more in detail explanation further down) 
@@ -84,7 +85,7 @@ Secondly, when the AI was transferring every single value into a value it can un
 Every programmer knows that bugs come with developing a program, but some bugs could have been prevented. Like the bugs where the naming of the variables was the reason. As an example, there was some confusion when changing some variables in the program. Also, there were some large bugs, some resulting in the datasets that couldn't be opened but this was easily resolved when the issue was found.
 
 ## Credits
-We would like to thank Mr. Postma for guiding us through the process of building this program. In addition, we want to thank Mr. Gijsbers for providing us with useful information about the heart. Finally, we want to thank Dinand Wesdorp for his help in the development of the GUI. 
+We would like to thank Mr. [Postma](https://www.linkedin.com/in/marten-postma-phd-89861a3a/?originalSubdomain=nl) for guiding us through the process of building this program. In addition, we want to thank Mr. Gijsbers for providing us with useful information about the heart. Finally, we want to thank Dinand Wesdorp for his help in the development of the GUI. 
 
 ## Citation
 - scikit-learn (new BSD) https://pypi.org/project/scikit-learn/
