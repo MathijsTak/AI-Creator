@@ -57,6 +57,7 @@ We made a program that can create and train a model and then predict unknown dat
 - Open the file named 'GUI.exe'
 -- If the program gives an error, find the settings.json file open it and save it.
 - When the program starts for the first time you need to select the dataset (csv file) you want to use. (This has to be one of the datasets given below)
+- This opens another window where you can update the minimum and maximum values. If you don't want to do this select the label and click on add. If there are no errors close the window and the program starts up.
 - To create an AI go to File and select New File
 - Here you can set different parameters for the AI
 - When the parameters are set, you can train the AI by going under Train and selecting Train
