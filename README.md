@@ -1,4 +1,7 @@
-# Pacemaker AI
+# AI Creator
+
+![license](https://img.shields.io/badge/license-MIT-green) ![issues](https://img.shields.io/bitbucket/issues-raw/MathijsTak/AI-Creator) ![last commit](https://img.shields.io/github/last-commit/MathijsTak/AI-Creator) ![downloads](https://img.shields.io/github/downloads/MathijsTak/AI-Creator/total)
+
 
 ## Table of contents
 - [Preface](https://github.com/MathijsTak/Pacemaker-ai#preface)
@@ -34,12 +37,12 @@ For more information on how a neural network works click [here](https://www.ibm.
 
 
 ## Own research
-To know more about heart failure, we did some research on the heart. How to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/Pacemaker-ai/raw/main/The%20heart.docx)
+To know more about heart failure, we did some research on the heart. How to heart functions and how heart failure can arise. To read more about the research we did, click [here](https://github.com/MathijsTak/AI-Creator/blob/main/The%20heart.docx?raw=true)
 
 ### Experiments
 ![results.png](https://github.com/MathijsTak/AI-Creator/blob/main/wiki%20pictures/Results%20experiments.png)
 
-What we discovered is that the factors that can affect the probability of heart failure are in line with the datasets we use in the program. Most values in the dataset have some impact on the result but the best input values are age, gender, ap_hi, ap_lo, cholesterol, and gluc. Also when we removed one of these values as a test, we discovered that this would drastically increase the MAE (mean absolute error).
+We discovered that most values in the dataset have some impact on the result but the best input values are age, gender, ap_hi, ap_lo, cholesterol, and gluc. Also when we removed one of these values as a test and we discovered that this would drastically increase the MAE (mean absolute error).
 
 ## Product
 We made a program that can create and train a model and then predict unknown data
@@ -53,7 +56,8 @@ We made a program that can create and train a model and then predict unknown dat
 ### How to use
 - Open the file named 'GUI.exe'
 -- If the program gives an error, find the settings.json file open it and save it.
-- When the program starts for the first time you need to select the dataset (csv file) you want to use. (This has to be one of the datasets given below)
+- When the program starts for the first time you need to select the dataset (csv file) you want to use. (This can be one of the datasets given below or your own dataset)
+- This opens another window where you can update the minimum and maximum values. If you don't want to do this select the label and click on add. If there are no errors close the window and the program starts up.
 - To create an AI go to File and select New File
 - Here you can set different parameters for the AI
 - When the parameters are set, you can train the AI by going under Train and selecting Train
@@ -61,10 +65,9 @@ We made a program that can create and train a model and then predict unknown dat
 - If you want more information on how to use the program see the Wiki
 
 ### Available datasets
-- https://www.kaggle.com/sulianova/cardiovascular-disease-dataset
+- https://www.kaggle.com/sulianova/cardiovascular-disease-dataset This dataset has to be transformed into a csv file like the dataset below.
 - https://www.kaggle.com/andrewmvd/heart-failure-clinical-data
-- Note: You can [add other datasets](https://github.com/MathijsTak/Pacemaker-ai/wiki/settings.json) in 'Settings.json'
-- After release v0.3 there is an option to add a dataset using the GUI allowing users to easily add a personal dataset.
+- There is an option to add a dataset using the GUI allowing users to easily add a personal dataset.
 
 ### Settings
 - In settings.json are all the available datasets listed and it is possible to add a dataset yourself.
@@ -72,7 +75,8 @@ We made a program that can create and train a model and then predict unknown dat
 - To change the default save folder and the dataset you can either edit the settings.json or inside the application under Settings and then Other Settings.
 
 ## Conclusion
-We made a functioning AI that can predict heart failure. However, the AI is very basic and only uses 10 different variables in its calculations. When we take a look at the results of the experiments we've done, it becomes clear that even though we change some input values the average stays roughly the same. When we change the hidden layers we see that larger hidden layers improve the average result but with this method, it takes longer to create a model. It doesn't improve the average result as well, only by a small margin. It is interesting to see that height and weight are not improving the results. This isn't weird because in this dataset we also have cholesterol. Which is a known factor of causing heart failure. The AI does NOT replace a doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
+We made a functioning AI that can predict heart failure. However, the AI is very basic and only uses 10 different variables in its calculations. When we take a look at the results of the experiments we've done, it becomes clear that even though we change some input values the average stays roughly the same. When we change the hidden layers we see that larger hidden layers improve the average result but with this method, it takes longer to create a model. It also doesn't greatly improve the average result, only by a small margin. It is interesting to see that height and weight are not improving the results. But when you think about it, it isn't weird. Because in the dataset we used there is a value cholestorol, height and weight aren't important anymore. Cholestorol is also a known factor of causing heart failure.
+A note: the AI does NOT replace a doctor at all. If you think you may be at risk for heart failure, go see a doctor. 
 
 ## Reflection
 The process of this project went very smoothly. Although we ran into a couple of issues. Firstly, bugs, we experienced lots of them. (more in detail explanation further down) 
@@ -81,7 +85,7 @@ Secondly, when the AI was transferring every single value into a value it can un
 Every programmer knows that bugs come with developing a program, but some bugs could have been prevented. Like the bugs where the naming of the variables was the reason. As an example, there was some confusion when changing some variables in the program. Also, there were some large bugs, some resulting in the datasets that couldn't be opened but this was easily resolved when the issue was found.
 
 ## Credits
-We would like to thank Mr. Postma for guiding us through the process of building this program. In addition, we want to thank Mr. Gijsbers for providing us with useful information about the heart. Finally, we want to thank Dinand Wesdorp for his help in the development of the GUI. 
+We would like to thank Mr. [Postma](https://www.linkedin.com/in/marten-postma-phd-89861a3a/?originalSubdomain=nl) for guiding us through the process of building this program. In addition, we want to thank Mr. Gijsbers for providing us with useful information about the heart. Finally, we want to thank Dinand Wesdorp for his help in the development of the GUI. 
 
 ## Citation
 - scikit-learn (new BSD) https://pypi.org/project/scikit-learn/
