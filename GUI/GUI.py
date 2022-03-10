@@ -255,6 +255,7 @@ while True:
             save_json(settings, settings, {"default save folder": ""})
 
         if event == "data_path":
+            settings = open_json()
             old_data_path = data_path
             data_path = values["data_path"]
             if data_path != old_data_path:
