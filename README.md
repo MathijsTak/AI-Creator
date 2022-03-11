@@ -4,18 +4,18 @@
 
 
 ## Table of contents
-- [Preface](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#preface)
-- [Introduction](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#introduction)
-- [Description of what is already known](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#description-of-what-is-already-known)
+- [Preface](https://github.com/MathijsTak/Pacemaker-ai#preface)
+- [Introduction](https://github.com/MathijsTak/Pacemaker-ai#introduction)
+- [Description of what is already known](https://github.com/MathijsTak/Pacemaker-ai#description-of-what-is-already-known)
   - What is an AI
-- [Own research](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#own-research)
-- [Product](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#product)
+- [Own research](https://github.com/MathijsTak/Pacemaker-ai#own-research)
+- [Product](https://github.com/MathijsTak/Pacemaker-ai#product)
   - Installation
   - How to use
   - Available datasets
   - Settings
-- [Conclusion](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#conclusion)
-- [Reflecion](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#reflection)
+- [Conclusion](https://github.com/MathijsTak/Pacemaker-ai#conclusion)
+- [Reflecion](https://github.com/MathijsTak/Pacemaker-ai#reflection)
 - [Credits](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#credits)
 - [Citation](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#citation)
 
