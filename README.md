@@ -16,8 +16,8 @@
   - Settings
 - [Conclusion](https://github.com/MathijsTak/Pacemaker-ai#conclusion)
 - [Reflecion](https://github.com/MathijsTak/Pacemaker-ai#reflection)
-- [Credits](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#credits)
-- [Citation](https://github.com/MathijsTak/Pacemaker-ai/blob/main/README.md#citation)
+- [Credits](https://github.com/MathijsTak/Pacemaker-ai#credits)
+- [Citation](https://github.com/MathijsTak/Pacemaker-ai#citation)
 
 ## Preface
 With this program, we tried to predict heart failure. We did this by creating a program that can train an AI and then use it to predict unknown data. In the Netherlands, it is common to make a PWS in the last year of high school. The PWS is a big assignment where you get to choose how you want to fill it in. We wanted to combine biology and informatics, but we didn't know-how. After some thinking, we finally figured out how to combine biology and informatics. We came up with the following idea: to make an AI that can predict whether heart failure is likely. To accomplish this, we divided this project into two. One person will do the programming, the other one will be the data analyst. We think we've made something with huge potential, something that will be very useful in the future.
